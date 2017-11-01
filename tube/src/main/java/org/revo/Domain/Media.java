@@ -28,7 +28,11 @@ public class Media {
     private String id;
     private String m3u8;
     @JsonView(UtilView.Media.class)
+    private double time;
+    @JsonView(UtilView.Media.class)
     private String image;
+    @JsonView(UtilView.Media.class)
+    private String meta;
     private byte[] secret;
     @JsonView(UtilView.Media.class)
     private Status status = Status.BINDING;

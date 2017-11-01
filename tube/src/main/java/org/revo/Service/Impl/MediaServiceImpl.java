@@ -53,9 +53,12 @@ public class MediaServiceImpl implements MediaService {
     @Override
     public Media save(Media media) {
         Media one = mediaRepository.findOne(media.getId());
+
         one.setM3u8(media.getM3u8());
+        one.setTime(media.getTime());
         one.setStatus(media.getStatus());
         one.setSecret(media.getSecret());
+
         return mediaRepository.save(one);
     }
 
