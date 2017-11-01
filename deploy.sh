@@ -36,8 +36,13 @@ echo "feedback 8"
 
 
 echo "-----------------";
-echo "enter your choose";
-read n
+
+if [[   -z  $1  ]];then
+    echo "enter your choose";
+    read n
+else
+    n=$1
+fi
 
 IFS=', ' read -r -a array <<< "$n"
 
