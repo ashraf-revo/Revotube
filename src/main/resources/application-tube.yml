@@ -1,0 +1,13 @@
+spring:
+  rabbitmq:
+    virtual-host: kdtyygam
+    username: kdtyygam
+    host: mosquito.rmq.cloudamqp.com
+    password: oXXN-6pZP-fXZj3T1dxbygf9aRToHmlB
+  data:
+    mongodb:
+      database: CloudFoundry_nurpqhqq_5980n1ud
+      port: 11535
+      password: jF1IQleN-OdnSfAZxfPnliTXwIx8aJgW
+      username: CloudFoundry_nurpqhqq_5980n1ud_m0u4cf94
+      host: ds111535.mlab.com

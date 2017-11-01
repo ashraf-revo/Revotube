@@ -1,0 +1,26 @@
+management:
+  security:
+    enabled: false
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+#        git:
+#          uri: https://github.com/ashraf-revo/RevoTubeConfig
+        native:
+          search-locations: classpath:/shared
+  profiles:
+     active: native
+server:
+  port: 8888
+org:
+  revo:
+    env:
+      users:
+      -  email: revo
+         enable: true
+         locked: true
+         password: $2a$10$nMXQGWFcd01aMI67ubPVrO5oq5rByWzlp.ZKj8mT/S7upiiyrmkhC
+         type: 111

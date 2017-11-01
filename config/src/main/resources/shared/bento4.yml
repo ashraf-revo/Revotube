@@ -1,0 +1,19 @@
+server:
+  port: ${env.port:8082}
+  context-path: /bento4
+eureka:
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost:${server.port}}
+    statusPageUrl: ${env.schema}://${eureka.instance.hostname}${server.context-path}/info
+    healthCheckUrl: ${env.schema}://${eureka.instance.hostname}${server.context-path}/health
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+         destination: ToHls
+         group: s1
+        output:
+         destination: ToMedia
+         group: s2
+         contentType: application/json

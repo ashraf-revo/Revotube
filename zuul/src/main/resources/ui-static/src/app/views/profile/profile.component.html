@@ -1,0 +1,48 @@
+<section class="vbox">
+  <section class="hbox stretch" style="display: inline-table">
+  <aside class="aside-lg bg-light lter b-r">
+    <section class="vbox">
+      <section class="scrollable">
+        <div class="wrapper" *ngIf="user">
+          <div class="text-center m-b m-t">
+            <a class="thumb-lg">
+              <img [src]="user.imageUrl" class="img-circle">
+            </a>
+            <div>
+              <div class="h3 m-t-xs m-b-xs">{{user.name}}</div>
+            </div>
+          </div>
+          <div>
+            <small class="text-uc text-xs text-muted">info</small>
+            <p>{{user.info}}</p>
+            <div class="line"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </aside>
+  <aside class="bg-white">
+    <section class="vbox">
+      <header class="header bg-light lt">
+        <ul class="nav nav-tabs nav-white">
+          <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
+          <li class=""><a href="#events" data-toggle="tab">Events</a></li>
+        </ul>
+      </header>
+      <section class="scrollable">
+        <div class="tab-content">
+          <div class="tab-pane active" id="activity">
+            <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+              <rt-video-row *ngFor="let m of media" [media]="m"></rt-video-row>
+            </ul>
+          </div>
+          <div class="tab-pane" id="events">
+            <div class="text-center wrapper"><i
+              class="fa fa-spinner fa fa-spin fa fa-large"></i></div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </aside>
+</section>
+</section>

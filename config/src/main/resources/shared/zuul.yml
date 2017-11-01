@@ -1,0 +1,32 @@
+server:
+  port: 8080
+spring:
+  http:
+    multipart:
+      max-file-size: 10MB
+eureka:
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost:${server.port}}
+    statusPageUrl: ${env.schema}://${eureka.instance.hostname}/info
+    healthCheckUrl: ${env.schema}://${eureka.instance.hostname}/health
+zuul:
+  routes:
+    tube:
+      path: /tube/**
+      stripPrefix: false
+    bento4:
+      path: /bento4/**
+      stripPrefix: false
+    feedback:
+      path: /feedback/**
+      stripPrefix: false
+    auth:
+      path: /auth/**
+      stripPrefix: false
+      sensitive-headers:
+  ws:
+    brokerages:
+      hello:
+        end-points: /ws
+        brokers:  /topic
+        destination-prefixes: /app

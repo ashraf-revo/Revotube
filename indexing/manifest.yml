@@ -1,0 +1,10 @@
+---
+applications:
+- name: indexing
+  memory: 1GB
+  instances: 1
+  host: revotubeindexing
+  buildpack: java_buildpack
+  path: target/indexing-0.0.1-SNAPSHOT.jar
+  env:
+    ENV_CONFIG_HOST: https://revo:revo@revotubeconfig.cfapps.io

@@ -1,0 +1,7 @@
+localconfig: https://revo:revo@revotubeconfig.cfapps.io
+spring:
+  application:
+    name: zuul
+  cloud:
+    config:
+      uri: ${env.config.host:${localconfig}}

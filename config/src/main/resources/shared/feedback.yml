@@ -1,0 +1,16 @@
+server:
+  port: ${env.port:8083}
+  context-path: /feedback
+eureka:
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost:${server.port}}
+    statusPageUrl: ${env.schema}://${eureka.instance.hostname}${server.context-path}/info
+    healthCheckUrl: ${env.schema}://${eureka.instance.hostname}${server.context-path}/health
+spring:
+  data:
+    mongodb:
+      database: CloudFoundry_7njjtl29_v8vn3s1p
+      port: 35775
+      password: xKLRSCWT39lJEbtdbSFfkR6xWydhp27X
+      username: CloudFoundry_7njjtl29_v8vn3s1p_c7ekd59m
+      host: ds235775.mlab.com

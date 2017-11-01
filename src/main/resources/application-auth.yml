@@ -1,0 +1,12 @@
+spring:
+  data:
+    mongodb:
+      database: CloudFoundry_nurpqhqq_vhujsoad
+      port: 11535
+      password: xZ079oUsv9gNF1IFHtKhs2BUnlRe5Wkd
+      username: CloudFoundry_nurpqhqq_vhujsoad_9n425t1r
+      host: ds111535.mlab.com
+  redis:
+    host: redis-16196.c15.us-east-1-2.ec2.cloud.redislabs.com
+    password: D9b6ljovcG0IkFx8
+    port: 16196

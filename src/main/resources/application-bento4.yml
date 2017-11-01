@@ -1,0 +1,6 @@
+spring:
+  rabbitmq:
+    virtual-host: kdtyygam
+    username: kdtyygam
+    host: mosquito.rmq.cloudamqp.com
+    password: oXXN-6pZP-fXZj3T1dxbygf9aRToHmlB

@@ -1,0 +1,40 @@
+<section class="vbox">
+  <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+    <rt-header [router]="router" [activatedRoute]="activatedRoute"
+               [search_key]="search_key"
+               [authUser]="authUser" [userService]="userService"
+               [authService]="authService"></rt-header>
+  </header>
+  <section>
+    <section class="hbox stretch">
+      <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
+        <section class="vbox">
+          <rt-nav></rt-nav>
+        </section>
+      </aside>
+      <section id="content">
+        <section class="hbox stretch">
+          <section>
+
+            <router-outlet></router-outlet>
+
+          </section>
+          <aside class="col-lg-3 b-l">
+            <section class="vbox">
+              <section class="scrollable padder-v">
+                <div class="panel">
+                  <h4 class="font-thin padder">
+                    Latest Videos
+                  </h4>
+                  <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+                    <rt-video-row *ngFor="let m of media" [media]="m"></rt-video-row>
+                  </ul>
+                </div>
+              </section>
+            </section>
+          </aside>
+        </section>
+      </section>
+    </section>
+  </section>
+</section>

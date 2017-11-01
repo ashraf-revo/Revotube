@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Authorize</title>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>-->
+    <link rel="stylesheet" href="https://s3-eu-west-1.amazonaws.com/static-revo/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://s3-eu-west-1.amazonaws.com/static-revo/style.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="formHolder login">
+
+        <span>hi </span><span sec:authentication="principal.name"></span> <strong th:text="${client.getClientId()}"></strong>
+        <span>want to access you using this scopes</span>
+        <form th:action="@{/oauth/authorize}" name="accept" method="post">
+            <div th:each="u:${client.getScope()}">
+                <div class="checkbox">
+                    <label>
+                        <input th:id="${u}" type="checkbox" th:name="|scope.${u}|" value="true"/>
+                        <span th:text="${u}"></span>
+                    </label>
+                </div>
+            </div>
+            <input type="hidden" name="user_oauth_approval" value="true"/>
+            <div class="form-group">
+                <button type="submit" class="btn btn-sm  btn-default">Submit</button>
+            </div>
+        </form>
+        <form th:action="@{/oauth/authorize}" name="deny" method="post">
+            <input type="hidden" name="user_oauth_approval" value="false"/>
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger">Deny</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
