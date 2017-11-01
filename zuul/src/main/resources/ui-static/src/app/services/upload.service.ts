@@ -18,6 +18,7 @@ export class UploadService {
       let xhr: XMLHttpRequest = new XMLHttpRequest();
 
       if (media.title != null) form.append("title", media.title);
+      if (media.meta != null) form.append("meta", media.meta);
       if (media.file != null) form.append("file", media.file);
 
       xhr.onreadystatechange = () => {

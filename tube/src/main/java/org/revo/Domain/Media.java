@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
+import static com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY;
 import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 
 /**
@@ -26,21 +27,28 @@ public class Media {
     @Id
     @JsonView(UtilView.Media.class)
     private String id;
+    @JsonProperty(access = READ_ONLY)
     private String m3u8;
     @JsonView(UtilView.Media.class)
+    @JsonProperty(access = READ_ONLY)
     private double time;
     @JsonView(UtilView.Media.class)
+    @JsonProperty(access = READ_ONLY)
     private String image;
     @JsonView(UtilView.Media.class)
     private String meta;
+    @JsonProperty(access = READ_ONLY)
     private byte[] secret;
     @JsonView(UtilView.Media.class)
+    @JsonProperty(access = READ_ONLY)
     private Status status = Status.BINDING;
     @CreatedBy
     @JsonView(UtilView.Media.class)
+    @JsonProperty(access = READ_ONLY)
     private String user;
     @CreatedDate
     @JsonView(UtilView.Media.class)
+    @JsonProperty(access = READ_ONLY)
     private Date createdDate = new Date();
     @JsonView(UtilView.Media.class)
     private String title;

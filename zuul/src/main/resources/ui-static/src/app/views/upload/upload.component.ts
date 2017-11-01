@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, NgZone} from "@angular/core";
+import {Component, NgZone, OnDestroy, OnInit} from "@angular/core";
 import {UploadService} from "../../services/upload.service";
 import {Media} from "../../domain/media";
 import {Subscription} from "rxjs";
@@ -9,8 +9,8 @@ import {Upload} from "../../domain/upload";
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css']
 })
-export class UploadComponent implements OnInit,OnDestroy {
-public  media: Media = new Media();
+export class UploadComponent implements OnInit, OnDestroy {
+  public media: Media = new Media();
   public uploading: Upload[] = [];
   public subscription: Subscription;
 
@@ -53,29 +53,31 @@ public  media: Media = new Media();
 
   }
 
-  upload(file: any, fileView: any) {
+  upload(file: any, fileView: any, meta: any) {
     if (file.files.length > 0) {
       this.media.file = file.files[0];
     }
     this._uploadService.upload(this.media).subscribe();
-    this.reset(file, fileView)
+    this.reset(file, fileView, meta)
   }
 
-  reset(file: any, fileView: any) {
+  reset(file: any, fileView: any, meta: any) {
     if (file.files.length > 0) {
       file.files = null;
     }
     fileView.value = "";
+    meta.value = "";
     this.media = new Media();
   }
 
 
-  name(ref1: any, ref2: any) {
+  name(ref1: any, ref2: any, ref3: any) {
     if (ref1.files.length == 1) {
       ref2.value = ref1.files[0].name;
     } else {
       ref2.value = '';
     }
     this.media.title = ref2.value;
+    this.media.meta = ref3.value;
   }
 }
