@@ -19,7 +19,9 @@ public class Media {
     @JestId
     private String id;
     private String image;
-    private String user;
+    private String userId;
+    private User user;
+    private double time;
     private String title;
     private String meta;
     private Date createdDate = new Date();

@@ -20,7 +20,7 @@ public class UserMediaView {
     @Id
     private String id;
     @CreatedBy
-    private String user;
+    private String userId;
     private String media;
     @CreatedDate
     private Date createdDate = new Date();

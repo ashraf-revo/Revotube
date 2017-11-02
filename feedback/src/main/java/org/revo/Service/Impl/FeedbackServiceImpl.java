@@ -54,7 +54,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     public void unlike(String id) {
-        userMediaLikeRepository.deleteByMediaAndUser(id, userService.current());
+        userMediaLikeRepository.deleteByMediaAndUserId(id, userService.current());
     }
 
     @Override
@@ -79,7 +79,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     public void uncomment(String id) {
-        userMediaCommentRepository.deleteByIdAndUser(id, userService.current());
+        userMediaCommentRepository.deleteByIdAndUserId(id, userService.current());
     }
 
     @Override

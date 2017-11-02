@@ -13,4 +13,4 @@ spring:
       bindings:
         input:
          destination: ToIndexing
-         group: s1
+         group: s3

@@ -32,13 +32,13 @@ public class Bento4ServiceImpl implements Bento4Service {
             s3Service.push(hlsResult);
             media.setM3u8(hlsResult.getM3u8());
             media.setSecret(hlsResult.getKey());
-            media.setStatus(Status.SUCCESS);
             List<UnparsedTag> tags = PlaylistFactory.parsePlaylist(PlaylistVersion.TWELVE, hlsResult.getM3u8()).getTags();
             double sum = tags
                     .stream().filter(it -> it.getTagName().equalsIgnoreCase("EXTINF"))
                     .map(it -> it.getAttributes().get("NONAME0"))
                     .mapToDouble(Double::parseDouble).sum();
             media.setTime(sum);
+            media.setStatus(Status.SUCCESS);
             hlsResult.freeSpace();
         } else {
             media.setStatus(Status.FAIL);

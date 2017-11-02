@@ -24,6 +24,9 @@ zuul:
       path: /auth/**
       stripPrefix: false
       sensitive-headers:
+    indexing:
+      path: /indexing/**
+      stripPrefix: false
   ws:
     brokerages:
       hello:

@@ -1,16 +1,22 @@
 package org.revo.Controller;
 
-import com.fasterxml.jackson.annotation.JsonView;
+import org.revo.Domain.Ids;
 import org.revo.Domain.Media;
 import org.revo.Domain.Status;
+import org.revo.Domain.User;
 import org.revo.Service.MediaService;
-import org.revo.Util.UtilView;
+import org.revo.Service.UserFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 
 /**
@@ -21,38 +27,37 @@ import java.util.List;
 public class MainController {
     @Autowired
     private MediaService mediaService;
+    @Autowired
+    private UserFeignService userFeignService;
 
     @PostMapping("save")
     private Media save(@ModelAttribute Media media) throws IOException {
         return mediaService.process(media);
     }
 
-    @PostMapping("search")
-    private List<Media> search(@RequestBody Media media) {
-        return mediaService.findAll(Status.SUCCESS);
-    }
-
-/*
-    @PostMapping("publish")
-    private Media publish(@RequestBody Media media, @AuthenticationPrincipal User user) {
-        return mediaService.publish(media, user);
-    }
-*/
-
     @GetMapping
-    @JsonView(UtilView.Media.class)
     public Iterable<Media> findAll() {
-        return mediaService.findAll(Status.SUCCESS);
+        return addUserInfo(mediaService.findAll(Status.SUCCESS));
+    }
+
+    private List<Media> addUserInfo(List<Media> all) {
+        Ids ids = new Ids();
+        ids.setIds(all.stream().map(Media::getUserId).collect(toList()));
+        Map<String, User> collect = userFeignService.usersByIds(ids).stream().collect(Collectors.toMap(User::getId, Function.identity()));
+        return all.stream().map(it -> {
+            it.setUser(collect.get(it.getUserId()));
+            it.setSecret(null);
+            it.setM3u8(null);
+            return it;
+        }).collect(toList());
     }
 
     @GetMapping("user/{id}")
-    @JsonView(UtilView.Media.class)
     public List<Media> findAllByUser(@PathVariable("id") String id) {
-        return mediaService.findByUser(id, Status.SUCCESS);
+        return addUserInfo(mediaService.findByUser(id, Status.SUCCESS));
     }
 
     @GetMapping("{id}")
-    @JsonView(UtilView.Media.class)
     public Media findOne(@PathVariable("id") String id) {
         return mediaService.findOne(id);
     }

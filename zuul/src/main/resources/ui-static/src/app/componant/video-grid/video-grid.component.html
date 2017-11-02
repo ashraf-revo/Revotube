@@ -2,27 +2,12 @@
   <div class="item">
     <div class="pos-rlt">
       <div class="bottom">
-        <span class="badge bg-info m-l-sm m-b-sm">03:20</span>
+        <span class="badge bg-info m-l-sm m-b-sm">{{(media.time*1000)| amFromUtc |amDateFormat: 'mm:ss'}}</span>
       </div>
       <div class="item-overlay opacity r r-2x bg-black">
-        <div class="text-info padder m-t-sm text-sm">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-o text-muted"></i>
-        </div>
         <div class="center text-center m-t-n">
           <a [routerLink]="['/video',media.id]">
             <i class="icon-control-play i-2x"></i>
-          </a>
-        </div>
-        <div class="bottom padder m-b-sm">
-          <a class="pull-right">
-            <i class="fa fa-heart-o"></i>
-          </a>
-          <a>
-            <i class="fa fa-plus-circle"></i>
           </a>
         </div>
       </div>
@@ -32,10 +17,12 @@
     </div>
     <div class="padder-v">
       <a class="text-ellipsis" [routerLink]="['/video',media.id]"> {{media.title}}</a>
-      <a [routerLink]="['/profile',media.user]" class="text-ellipsis text-xs text-muted">
+      <a [routerLink]="['/profile',media.userId]" class="text-ellipsis text-xs text-muted">
         {{media?.tempUser?.name}}
       </a>
-
+      <span class="text-ellipsis">
+      {{media.createdDate | amTimeAgo}}
+      </span>
     </div>
   </div>
 </div>

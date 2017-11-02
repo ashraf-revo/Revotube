@@ -5,7 +5,7 @@ export class Media {
   image: string;
   meta: string;
   time: number;
-  user: number;
+  userId: number;
   Status: string;
   createdDate: string;
   title: string;

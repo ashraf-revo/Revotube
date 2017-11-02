@@ -12,8 +12,8 @@ spring:
       bindings:
         input:
          destination: ToHls
-         group: s1
+         group: s2
         output:
          destination: ToMedia
-         group: s2
+         group: s1
          contentType: application/json

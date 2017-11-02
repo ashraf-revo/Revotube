@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.Optional;
 
 public interface UserMediaLikeRepository extends MongoRepository<UserMediaLike, String> {
-    void deleteByMediaAndUser(String id, String current);
+    void deleteByMediaAndUserId(String id, String current);
 
     int countByMedia(String id);
 

@@ -1,5 +1,6 @@
 package org.revo.Controller;
 
+import org.revo.Domain.Ids;
 import org.revo.Domain.User;
 import org.revo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class MainController {
     private UserService userService;
 
     @RequestMapping("/oauth/confirm_access")
-    public ModelAndView getAccessConfirmation(@ModelAttribute AuthorizationRequest clientAuth,Principal user) {
+    public ModelAndView getAccessConfirmation(@ModelAttribute AuthorizationRequest clientAuth, Principal user) {
         return new ModelAndView("access_confirmation").addObject("auth_request", clientAuth)
                 .addObject("client", clientDetailsService.loadClientByClientId(clientAuth.getClientId()));
     }
@@ -54,9 +55,16 @@ public class MainController {
     public Principal user(Principal user) {
         return user;
     }
+
     @ResponseBody
     @GetMapping("/user/{id}")
     public User userById(@PathVariable("id") String id) {
         return userService.findOne(id);
+    }
+
+    @ResponseBody
+    @PostMapping("/users")
+    public Iterable<User> usersByIds(@RequestBody Ids ids) {
+        return userService.findAll(ids.getIds());
     }
 }

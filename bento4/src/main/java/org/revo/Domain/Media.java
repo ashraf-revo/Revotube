@@ -18,6 +18,6 @@ public class Media {
     private String meta;
     private byte[] secret;
     private Status status = Status.BINDING;
-    private String user;
+    private String userId;
     private Date createdDate = new Date();
 }

@@ -2,6 +2,7 @@ package org.revo.Service;
 
 import org.revo.Domain.User;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -19,4 +20,6 @@ public interface UserService {
 //    void activate(Long id);
 
     User findOne(String id);
+
+    Iterable<User> findAll(List<String> ids);
 }

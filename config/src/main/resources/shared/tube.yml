@@ -24,6 +24,10 @@ spring:
          destination: ToHls
          group: s2
          contentType: application/json
+        custom_output:
+         destination: ToIndexing
+         group: s3
+         contentType: application/json
   http:
     multipart:
       max-file-size: 10MB

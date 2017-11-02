@@ -7,6 +7,7 @@ import org.jcodec.api.JCodecException;
 import org.jcodec.api.awt.FrameGrab;
 import org.jcodec.common.FileChannelWrapper;
 import org.jcodec.common.NIOUtils;
+import org.revo.Config.CustomProcessor;
 import org.revo.Domain.Media;
 import org.revo.Domain.Status;
 import org.revo.Repository.MediaRepository;
@@ -14,7 +15,6 @@ import org.revo.Service.MediaService;
 import org.revo.Service.S3Service;
 import org.revo.Util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +35,7 @@ public class MediaServiceImpl implements MediaService {
     @Autowired
     private MediaRepository mediaRepository;
     @Autowired
-    private Processor processor;
+    private CustomProcessor customProcessor;
 
     @Override
     public File saveInFileSystem(Media media) throws IOException {
@@ -59,7 +59,9 @@ public class MediaServiceImpl implements MediaService {
         one.setStatus(media.getStatus());
         one.setSecret(media.getSecret());
 
-        return mediaRepository.save(one);
+        Media saved = mediaRepository.save(one);
+        this.customProcessor.custom_output().send(MessageBuilder.withPayload(saved).build());
+        return saved;
     }
 
     @Override
@@ -90,7 +92,7 @@ public class MediaServiceImpl implements MediaService {
 
     @Override
     public List<Media> findByUser(String id, Status status) {
-        return mediaRepository.findByUserAndStatus(id, status);
+        return mediaRepository.findByUserIdAndStatus(id, status);
     }
 
     /*
@@ -134,7 +136,7 @@ public class MediaServiceImpl implements MediaService {
             Media m = new Media();
             m.setId(save.getId());
             System.out.println("will send");
-            processor.output().send(MessageBuilder.withPayload(m).build());
+            customProcessor.output().send(MessageBuilder.withPayload(m).build());
             System.out.println("done thread");
         }).start();
 

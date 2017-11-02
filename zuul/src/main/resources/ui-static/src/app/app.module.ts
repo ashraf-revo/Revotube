@@ -31,6 +31,8 @@ import {AnimateBarComponent} from './componant/animate-bar/animate-bar.component
 import {NotificationComponent} from './componant/notification/notification.component';
 import {FeedbackService} from "./services/feedback.service";
 import {SearchComponent} from "./views/search/search.component";
+import { MomentModule } from 'angular2-moment';
+import {IndexingService} from "./services/indexing.service";
 
 
 @NgModule({
@@ -60,9 +62,10 @@ import {SearchComponent} from "./views/search/search.component";
     VgBufferingModule,
     BrowserModule,
     FormsModule,
+    MomentModule,
     HttpModule, RouterModule.forRoot(routes)
   ],
-  providers: [DefaultService, TubeService, UserService, AuthService, UserService, UploadService, FeedbackService],
+  providers: [DefaultService, TubeService, UserService, AuthService, UserService, UploadService, FeedbackService,IndexingService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

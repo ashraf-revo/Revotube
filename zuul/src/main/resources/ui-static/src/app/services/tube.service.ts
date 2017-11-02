@@ -18,7 +18,7 @@ export class TubeService {
   retrieve(): Observable<Media[]> {
     return this._http.get(this.url).flatMap(res => Observable.from(res.json()))
       .flatMap((itm: Media) => {
-        return this._userService.findOne(itm.user).map(it => {
+        return this._userService.findOne(itm.userId).map(it => {
           itm.tempUser = it;
           return itm;
         })
@@ -29,7 +29,7 @@ export class TubeService {
   search(media: Media): Observable<Media[]> {
     return this._http.post(this.url + "search", media).flatMap(res => Observable.from(res.json()))
       .flatMap((itm: Media) => {
-        return this._userService.findOne(itm.user).map(it => {
+        return this._userService.findOne(itm.userId).map(it => {
           itm.tempUser = it;
           return itm;
         })
@@ -39,7 +39,7 @@ export class TubeService {
   findByUser(it: number): Observable<Media[]> {
     return this._http.get(this.url + "user/" + it).flatMap(res => Observable.from(res.json()))
       .flatMap((itm: Media) => {
-        return this._userService.findOne(itm.user).map(it => {
+        return this._userService.findOne(itm.userId).map(it => {
           itm.tempUser = it;
           return itm;
         })

@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface UserMediaCommentRepository extends MongoRepository<UserMediaComment, String> {
-    void deleteByIdAndUser(String id, String user);
+    void deleteByIdAndUserId(String id, String user);
 
     List<UserMediaComment> findAllByMedia(String id);
 

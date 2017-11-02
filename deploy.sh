@@ -2,7 +2,7 @@
 mvn clean install -DskipTests=true
 
 function deploy(){
-    cf login -u $1 -p "01120266849ASHra;"
+    cf login -u $1 -p "01120266849ASHra;" -a api.run.pivotal.io
 	cd $2 ;cf push;cd -
 }
 
