@@ -10,5 +10,5 @@ export class Media {
   createdDate: string;
   title: string;
   file: any;
-  tempUser: User;
+  user: User;
 }

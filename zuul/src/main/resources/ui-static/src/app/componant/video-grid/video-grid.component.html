@@ -18,7 +18,7 @@
     <div class="padder-v">
       <a class="text-ellipsis" [routerLink]="['/video',media.id]"> {{media.title}}</a>
       <a [routerLink]="['/profile',media.userId]" class="text-ellipsis text-xs text-muted">
-        {{media?.tempUser?.name}}
+        {{media.user.name}}
       </a>
       <span class="text-ellipsis">
       {{media.createdDate | amTimeAgo}}

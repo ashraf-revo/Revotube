@@ -14,6 +14,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._tubeService.retrieve().subscribe((it: Media[]) => this.media = it,error=>{},()=>{});
+    this._tubeService.findAll().subscribe((it: Media[]) => this.media = it,error=>{},()=>{});
   }
 }
