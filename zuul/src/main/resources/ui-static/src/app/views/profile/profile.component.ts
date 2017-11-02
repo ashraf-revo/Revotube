@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
     this._activatedRoute.params.map((it: Params) => it['id']).flatMap(it => this._userService.findOne(it)).subscribe(it => {
       this.user = it;
     });
-    this._activatedRoute.params.map((it: Params) => it['id']).flatMap(it => this._tubeService.findByUser(it)).subscribe(it => {
+    this._activatedRoute.params.map((it: Params) => it['id']).flatMap(it => this._tubeService.findByUserId(it)).subscribe(it => {
       this.media = it;
     });
   }
