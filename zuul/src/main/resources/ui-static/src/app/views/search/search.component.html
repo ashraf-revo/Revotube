@@ -10,23 +10,14 @@
             <rt-animate-bar></rt-animate-bar>
             Search
           </h2>
-          <div class="row">
-            <div class="col-sm-8">
-              <section class="panel panel-default">
-                <div class="panel-body">
-                  <button class="btn btn-danger btn-lg" (click)="more()">More</button>
-                </div>
-              </section>
-            </div>
-            <div class="col-sm-4">
-              <section class="panel panel-default">
-                <div class="panel-body">
 
-                </div>
-              </section>
-            </div>
-          </div>
+          <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+            <rt-video-row-search *ngFor="let m of media" [media]="m"></rt-video-row-search>
+          </ul>
+
+          <button class="btn btn-danger btn-lg" (click)="more()">More</button>
         </div>
+
       </section>
     </section>
   </aside>
