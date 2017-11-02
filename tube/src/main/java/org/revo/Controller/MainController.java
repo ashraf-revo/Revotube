@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -59,7 +60,8 @@ public class MainController {
 
     @GetMapping("{id}")
     public Media findOne(@PathVariable("id") String id) {
-        return mediaService.findOne(id);
+        Media one = mediaService.findOne(id);
+        return (one==null)?null:addUserInfo(Arrays.asList(one)).get(0);
     }
 
     @GetMapping("{id}.m3u8/{id}.key/")
