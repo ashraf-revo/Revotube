@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
       it.media.forEach(itm => {
         this.media.push(itm)
       });
-      this._location.replaceState("/search/" + this.search.page + "/" + this.search.search_key);
+      this._location.replaceState("/search/" + this.search.page + "/" + (this.search.search_key.split(" ").join("-")));
       console.log("will print all");
       this.media.forEach(it => console.log(it))
     });

@@ -1,4 +1,4 @@
 export class Search {
-  search_key: number;
+  search_key: string;
   page:number
 }
