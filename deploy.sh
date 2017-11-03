@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 mvn clean install -DskipTests=true
 
+data=('config' 'eureka' 'auth' 'zuul' 'tube' 'bento4' 'indexing' 'feedback')
+
 function deploy(){
     cf login -u $1 -p "01120266849ASHra;" -a api.run.pivotal.io
 	cd $2 ;cf push;cd -
@@ -25,14 +27,6 @@ function ify(){
         deploy ashraf4revo@gmail.com feedback
     fi
 }
-echo "config 1"
-echo "eureka 2"
-echo "auth 3"
-echo "zuul 4"
-echo "tube 5"
-echo "bento4 6"
-echo "indexing 7"
-echo "feedback 8"
 
 
 echo "-----------------";
