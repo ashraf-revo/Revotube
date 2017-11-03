@@ -1,1 +1,1 @@
-**not full tested with eureka**
+**not full tested with eureka in localhost**
