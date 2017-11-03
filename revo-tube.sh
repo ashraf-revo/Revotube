@@ -5,9 +5,13 @@ locations=( [0]=1 [1]=1 [2]=2 [3]=2 [4]=3 [5]=3 [6]=4 [7]=4)
 password="01120266849ASHra;"
 prefix="ashraf"
 suffix="revo@gmail.com"
+last_key=-1
 
 function login(){
-    cf login -u $prefix${locations[$1]}$suffix -p $password -a api.run.pivotal.io
+    if(($last_key!=${locations[$1]}));then
+        cf login -u $prefix${locations[$1]}$suffix -p $password -a api.run.pivotal.io
+    fi
+    last_key=${locations[$1]}
 }
 function deploy(){
     login $1
