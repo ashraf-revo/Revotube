@@ -8,4 +8,5 @@
   <a class="clear" [routerLink]="['/profile',media.user.id]">
     <small class="text-muted">{{media.user.name}}</small>
   </a>
+  <span class="badge bg-info m-l-sm m-b-sm">{{(media.time*1000)| amFromUtc |amDateFormat: 'mm:ss'}}</span>
 </li>
