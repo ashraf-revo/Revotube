@@ -12,3 +12,48 @@ API endpoint:   https://api.run.pivotal.io (API version: 2.98.0)
 User:           ashraf2revo@gmail.com
 Org:            ashraf2revo
 Space:          development
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building zuul 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.6.1:clean (default-clean) @ zuul ---
+[INFO] Deleting /media/ashraf/revo/develope/RevoTube/zuul/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ zuul ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 38 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ zuul ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /media/ashraf/revo/develope/RevoTube/zuul/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ zuul ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /media/ashraf/revo/develope/RevoTube/zuul/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ zuul ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /media/ashraf/revo/develope/RevoTube/zuul/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.18.1:test (default-test) @ zuul ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ zuul ---
+[INFO] Building jar: /media/ashraf/revo/develope/RevoTube/zuul/target/zuul-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:1.5.8.RELEASE:repackage (default) @ zuul ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ zuul ---
+[INFO] Installing /media/ashraf/revo/develope/RevoTube/zuul/target/zuul-0.0.1-SNAPSHOT.jar to /home/ashraf/.m2/repository/org/revo/zuul/0.0.1-SNAPSHOT/zuul-0.0.1-SNAPSHOT.jar
+[INFO] Installing /media/ashraf/revo/develope/RevoTube/zuul/pom.xml to /home/ashraf/.m2/repository/org/revo/zuul/0.0.1-SNAPSHOT/zuul-0.0.1-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 25.683 s
+[INFO] Finished at: 2017-11-09T11:33:06+02:00
+[INFO] Final Memory: 43M/278M
+[INFO] ------------------------------------------------------------------------
+Using manifest file /media/ashraf/revo/develope/RevoTube/zuul/manifest.yml
+
