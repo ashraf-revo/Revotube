@@ -34,6 +34,7 @@ import {SearchComponent} from "./views/search/search.component";
 import { MomentModule } from 'angular2-moment';
 import {IndexingService} from "./services/indexing.service";
 import { VideoRowSearchComponent } from './componant/video-row-search/video-row-search.component';
+import { CommentRowComponent } from './componant/comment-row/comment-row.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { VideoRowSearchComponent } from './componant/video-row-search/video-row-
     AnimateBarComponent,
     NotificationComponent,
     VideoRowSearchComponent,
+    CommentRowComponent,
 
   ],
   imports: [VgStreamingModule,

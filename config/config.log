@@ -1,0 +1,30 @@
+API endpoint: api.run.pivotal.io
+Authenticating...
+OK
+
+Targeted org ashraf1revo
+
+Targeted space development
+
+
+
+API endpoint:   https://api.run.pivotal.io (API version: 2.98.0)
+User:           ashraf1revo@gmail.com
+Org:            ashraf1revo
+Space:          development
+Starting app [36;1mconfig[0m in org [36;1mashraf1revo[0m / space [36;1mdevelopment[0m as [36;1mashraf1revo@gmail.com[0m...
+
+Waiting for app to start...
+
+name:              config
+requested state:   started
+instances:         1/1
+usage:             1G x 1 instances
+routes:            revotubeconfig.cfapps.io
+last uploaded:     Fri 03 Nov 13:36:49 EET 2017
+stack:             cflinuxfs2
+buildpack:         java_buildpack
+start command:     JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.10.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext -Djava.security.properties=$PWD/.java-buildpack/security_providers/java.security $JAVA_OPTS" && CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.9.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=300 -loadedClasses=20326 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/. org.springframework.boot.loader.JarLauncher
+
+     [1mstate[0m     [1msince[0m                  [1mcpu[0m      [1mmemory[0m         [1mdisk[0m           [1mdetails[0m
+#0   running   2017-11-09T06:45:54Z   271.2%   307.1M of 1G   165.6M of 1G   

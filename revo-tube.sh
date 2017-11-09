@@ -31,6 +31,11 @@ function stop(){
 	cf stop ${data[$1]}>>"${data[$1]}/${data[$1]}.log"
 }
 
+function logs(){
+    login $1
+	cf logs ${data[$1]} --recent >>"${data[$1]}/${data[$1]}.log"
+}
+
 function print(){
     echo "pass deploy,start,stop as your function"
     for i in "${!data[@]}"

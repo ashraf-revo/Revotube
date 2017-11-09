@@ -1,0 +1,35 @@
+App feedback is already stopped
+Starting app [36;1mfeedback[0m in org [36;1mashraf4revo[0m / space [36;1mdevelopment[0m as [36;1mashraf4revo@gmail.com[0m...
+
+Waiting for app to start...
+
+name:              feedback
+requested state:   started
+instances:         1/1
+usage:             1G x 1 instances
+routes:            revotubefeedback.cfapps.io
+last uploaded:     Wed 08 Nov 23:28:35 EET 2017
+stack:             cflinuxfs2
+buildpack:         java_buildpack
+start command:     JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.10.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext -Djava.security.properties=$PWD/.java-buildpack/security_providers/java.security $JAVA_OPTS" && CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.9.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=300 -loadedClasses=20695 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/. org.springframework.boot.loader.JarLauncher
+
+     [1mstate[0m     [1msince[0m                  [1mcpu[0m      [1mmemory[0m         [1mdisk[0m           [1mdetails[0m
+#0   running   2017-11-09T06:24:36Z   240.4%   360.9M of 1G   166.8M of 1G   
+Stopping app feedback in org ashraf4revo / space development as ashraf4revo@gmail.com...
+OK
+Starting app [36;1mfeedback[0m in org [36;1mashraf4revo[0m / space [36;1mdevelopment[0m as [36;1mashraf4revo@gmail.com[0m...
+
+Waiting for app to start...
+
+name:              feedback
+requested state:   started
+instances:         1/1
+usage:             1G x 1 instances
+routes:            revotubefeedback.cfapps.io
+last uploaded:     Wed 08 Nov 23:28:35 EET 2017
+stack:             cflinuxfs2
+buildpack:         java_buildpack
+start command:     JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.10.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext -Djava.security.properties=$PWD/.java-buildpack/security_providers/java.security $JAVA_OPTS" && CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.9.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=300 -loadedClasses=20695 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/. org.springframework.boot.loader.JarLauncher
+
+     [1mstate[0m     [1msince[0m                  [1mcpu[0m      [1mmemory[0m         [1mdisk[0m           [1mdetails[0m
+#0   running   2017-11-09T06:52:08Z   209.6%   315.6M of 1G   166.8M of 1G   
