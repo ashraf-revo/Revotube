@@ -31,7 +31,10 @@ public class Media {
     private Status status = Status.BINDING;
     @CreatedBy
     private String userId;
+    @Transient
     private User user;
+    @Transient
+    private MediaInfo mediaInfo;
     @CreatedDate
     private Date createdDate = new Date();
     private String title;

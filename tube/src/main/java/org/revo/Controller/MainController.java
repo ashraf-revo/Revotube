@@ -1,9 +1,7 @@
 package org.revo.Controller;
 
-import org.revo.Domain.Ids;
-import org.revo.Domain.Media;
-import org.revo.Domain.Status;
-import org.revo.Domain.User;
+import org.revo.Domain.*;
+import org.revo.Service.FeedBackFeignService;
 import org.revo.Service.MediaService;
 import org.revo.Service.UserFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +28,8 @@ public class MainController {
     private MediaService mediaService;
     @Autowired
     private UserFeignService userFeignService;
+    @Autowired
+    private FeedBackFeignService feedBackFeignService;
 
     @PostMapping("save")
     private Media save(@ModelAttribute Media media) throws IOException {
@@ -38,30 +38,49 @@ public class MainController {
 
     @GetMapping
     public Iterable<Media> findAll() {
-        return addUserInfo(mediaService.findAll(Status.SUCCESS));
+        List<Media> all = mediaService.findAll(Status.SUCCESS);
+        return addMediaInfo(addUser(addNull(all)));
     }
 
-    private List<Media> addUserInfo(List<Media> all) {
-        Ids ids = new Ids();
-        ids.setIds(all.stream().map(Media::getUserId).collect(toList()));
-        Map<String, User> collect = userFeignService.usersByIds(ids).stream().collect(Collectors.toMap(User::getId, Function.identity()));
+    private List<Media> addNull(List<Media> all) {
         return all.stream().map(it -> {
-            it.setUser(collect.get(it.getUserId()));
             it.setSecret(null);
             it.setM3u8(null);
             return it;
         }).collect(toList());
     }
 
+    private List<Media> addMediaInfo(List<Media> all) {
+        Ids ids = new Ids();
+        ids.setIds(all.stream().map(Media::getId).collect(toList()));
+        Map<String, MediaInfo> collect = feedBackFeignService.mediaInfoByIds(ids).stream().collect(Collectors.toMap(MediaInfo::getId, Function.identity()));
+
+        return all.stream().map(it -> {
+            it.setMediaInfo(collect.get(it.getId()));
+            return it;
+        }).collect(toList());
+    }
+
+    private List<Media> addUser(List<Media> all) {
+        Ids ids = new Ids();
+        ids.setIds(all.stream().map(Media::getUserId).collect(toList()));
+        Map<String, User> collect = userFeignService.usersByIds(ids).stream().collect(Collectors.toMap(User::getId, Function.identity()));
+        return all.stream().map(it -> {
+            it.setUser(collect.get(it.getUserId()));
+            return it;
+        }).collect(toList());
+    }
+
     @GetMapping("user/{id}")
     public List<Media> findAllByUser(@PathVariable("id") String id) {
-        return addUserInfo(mediaService.findByUser(id, Status.SUCCESS));
+        List<Media> all = mediaService.findByUser(id, Status.SUCCESS);
+        return addMediaInfo(addUser(addNull(all)));
     }
 
     @GetMapping("{id}")
     public Media findOne(@PathVariable("id") String id) {
         Media one = mediaService.findOne(id);
-        return (one==null)?null:addUserInfo(Arrays.asList(one)).get(0);
+        return (one == null) ? null : addMediaInfo(addUser(addNull(Arrays.asList(one)))).get(0);
     }
 
     @GetMapping("{id}.m3u8/{id}.key/")

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Transient;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
@@ -34,6 +35,8 @@ public class User extends BaseUser {
 
     @JsonProperty(access = WRITE_ONLY)
     private MultipartFile image;
+    @Transient
+    private UserInfo userInfo;
 
 
     @Override

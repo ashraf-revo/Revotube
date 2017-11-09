@@ -9,35 +9,35 @@ last_key=-1
 
 function login(){
     if(($last_key!=${locations[$1]}));then
-        cf login -u $prefix${locations[$1]}$suffix -p $password -a api.run.pivotal.io
+        cf login -u $prefix${locations[$1]}$suffix -p $password -a api.run.pivotal.io>"${data[$1]}/${data[$1]}.log"
     fi
     last_key=${locations[$1]}
 }
 function deploy(){
     login $1
 	cd ${data[$1]}
-	mvn clean install -DskipTests=true>"${data[$1]}.log"
+	mvn clean install -DskipTests=true>>"${data[$1]}.log"
 	cf push>>"${data[$1]}.log"
 	cd -
 }
 
 function start(){
     login $1
-	cf start ${data[$1]}
+	cf start ${data[$1]}>>"${data[$1]}/${data[$1]}.log"
 }
 
 function stop(){
     login $1
-	cf stop ${data[$1]}
+	cf stop ${data[$1]}>>"${data[$1]}/${data[$1]}.log"
 }
 
 function print(){
     echo "pass deploy,start,stop as your function"
     for i in "${!data[@]}"
     do
-        echo "${data[i]} ${i}"
+        echo -n "${data[i]} ${i}  "
     done
-    echo "-----------------";
+    echo "";
 }
 function readValue()
 {
@@ -53,7 +53,9 @@ function readValue()
 function main(){
 for i in "${!result[@]}"
 do
+    echo "${method} --> ${data[result[i]]}"
     ${method} "${result[i]}"
+    echo "done ${method} --> ${data[result[i]]}"
 done
 }
 print

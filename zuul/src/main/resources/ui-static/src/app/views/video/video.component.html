@@ -10,32 +10,62 @@
             <rt-animate-bar></rt-animate-bar>
             Video
           </h2>
-          <div style="margin: auto;width: 500px;height: 350px;">
-            <vg-player>
-              <vg-overlay-play></vg-overlay-play>
-              <vg-buffering></vg-buffering>
-              <vg-scrub-bar>
-                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-              </vg-scrub-bar>
-              <vg-controls>
-                <vg-play-pause></vg-play-pause>
-                <vg-playback-button></vg-playback-button>
-                <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
-                <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-                <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
-                <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
-                <vg-track-selector></vg-track-selector>
-                <vg-mute></vg-mute>
-                <vg-volume></vg-volume>
-                <vg-fullscreen></vg-fullscreen>
-              </vg-controls>
-              <video [vgMedia]="media" #media id="singleVideo" preload="auto"
-                     [poster]="'https://thumb-revo.s3-eu-west-1.amazonaws.com/'+id+'.png'"
-                     [vgHls]="'/tube/api/'+id+'.m3u8/'">
-              </video>
-            </vg-player>
+          <div class="row">
+
+            <div class="col-sm-7">
+              <div class="blog-post">
+                <div class="post-item">
+                  <div class="post-media" style="height: 340px;">
+                    <vg-player>
+                      <vg-overlay-play></vg-overlay-play>
+                      <vg-buffering></vg-buffering>
+                      <vg-scrub-bar>
+                        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                        <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                      </vg-scrub-bar>
+                      <vg-controls>
+                        <vg-play-pause></vg-play-pause>
+                        <vg-playback-button></vg-playback-button>
+                        <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                        <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+                        <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+                        <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+                        <vg-track-selector></vg-track-selector>
+                        <vg-mute></vg-mute>
+                        <vg-volume></vg-volume>
+                        <vg-fullscreen></vg-fullscreen>
+                      </vg-controls>
+                      <video [vgMedia]="media" #media id="singleVideo" preload="auto"
+                             [poster]="'https://thumb-revo.s3-eu-west-1.amazonaws.com/'+id+'.png'"
+                             [vgHls]="'/tube/api/'+id+'.m3u8/'">
+                      </video>
+                    </vg-player>
+                  </div>
+                  <div *ngIf="m" class="caption wrapper-sm"><h3 class="post-title">{{m.title}}</h3>
+                    <div class="post-sum"><p>{{m.meta}}</p></div>
+                    <div class="text-muted"><i class="fa fa-user icon-muted"></i>
+                      by
+                      <a [routerLink]="['/profile',m.userId]" class="m-r-sm">{{m.user.name}}</a>
+                      <i class="fa fa-clock-o icon-muted"></i>
+                      {{m.createdDate | amFromUtc | amDateFormat: 'YYYY-MM-DD'}}
+                      <a class="m-l-sm">
+                        <i class="fa fa-comment-o text-danger"></i> {{m.mediaInfo.comments}}
+                      </a>
+                      <a class="m-l-sm">
+                        <i class="fa  icon-like text-danger"></i> {{m.mediaInfo.likes}}
+                      </a>
+                      <a class="m-l-sm">
+                        <i class="fa icon-eye text-danger"></i> {{m.mediaInfo.views}}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-sm-5"></div>
           </div>
+
         </div>
       </section>
     </section>

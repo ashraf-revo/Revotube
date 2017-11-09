@@ -6,4 +6,5 @@ applications:
   host: revotubefeedback
   buildpack: java_buildpack
   path: target/feedback-0.0.1-SNAPSHOT.jar
+  env:
     ENV_CONFIG_HOST: https://revo:revo@revotubeconfig.cfapps.io

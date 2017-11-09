@@ -11,6 +11,26 @@
               <div class="h3 m-t-xs m-b-xs">{{user.name}}</div>
             </div>
           </div>
+
+
+          <div class="panel wrapper">
+            <div class="row text-center">
+              <div class="col-xs-6"><a href="#"> <span class="m-b-xs h4 block">{{user.userInfo.followers}}</span>
+                <small class="text-muted">Followers</small>
+              </a></div>
+              <div class="col-xs-6"><a href="#"> <span class="m-b-xs h4 block">{{user.userInfo.following}}</span>
+                <small class="text-muted">Following</small>
+              </a></div>
+            </div>
+          </div>
+
+
+          <div class="btn-group btn-group-justified m-b"><a class="btn btn-success btn-rounded" data-toggle="button">
+            <span class="text"> <i class="fa fa-eye"></i> Follow </span> <span class="text-active"> <i
+            class="fa fa-eye"></i> Following </span> </a>
+          </div>
+
+
           <div>
             <small class="text-uc text-xs text-muted">info</small>
             <p>{{user.info}}</p>

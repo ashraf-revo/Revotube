@@ -51,6 +51,9 @@ public class User extends BaseUser {
     @JsonProperty(access = WRITE_ONLY)
     private MultipartFile image;
 
+    @Transient
+    private UserInfo userInfo;
+
 
     @Override
     @JsonProperty(access = READ_ONLY)

@@ -28,14 +28,17 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     public UserInfo userInfo(String id) {
         return UserInfo.builder()
+                .id(id)
                 .followers(userUserFollowRepository.countByFrom(id))
-                .following(userUserFollowRepository.countByTo(userService.current()))
+//        userService.current()
+                .following(userUserFollowRepository.countByTo(id))
                 .build();
     }
 
     @Override
     public MediaInfo mediaInfo(String id) {
         return MediaInfo.builder()
+                .id(id)
                 .likes(userMediaLikeRepository.countByMedia(id))
                 .comments(userMediaCommentRepository.countByMedia(id))
                 .views(userMediaViewRepository.countByMedia(id))
@@ -49,7 +52,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     public UserMediaLike like(String id) {
-        return userMediaLikeRepository.findByUserAndMedia(userService.current(), id).orElseGet(() -> userMediaLikeRepository.save(UserMediaLike.builder().media(id).build()));
+        return userMediaLikeRepository.findByUserIdAndMedia(userService.current(), id).orElseGet(() -> userMediaLikeRepository.save(UserMediaLike.builder().media(id).build()));
     }
 
     @Override
@@ -84,7 +87,7 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     public boolean liked(String id) {
-        return userMediaLikeRepository.findByUserAndMedia(userService.current(), id).isPresent();
+        return userMediaLikeRepository.findByUserIdAndMedia(userService.current(), id).isPresent();
     }
 
 }

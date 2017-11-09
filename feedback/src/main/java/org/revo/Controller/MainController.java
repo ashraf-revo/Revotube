@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 
 /**
  * Created by ashraf on 18/04/17.
@@ -22,6 +24,15 @@ public class MainController {
     @GetMapping("/user/info/{id}")
     public ResponseEntity<UserInfo> userInfo(@PathVariable("id") String id) {
         return ResponseEntity.ok(feedbackService.userInfo(id));
+    }
+
+    @PostMapping("/user/info")
+    public ResponseEntity<List<UserInfo>> userssInfo(@RequestBody Ids ids) {
+        return ResponseEntity.ok().body(ids.getIds().stream().map(it -> feedbackService.userInfo(it)).collect(toList()));
+    }
+    @PostMapping("/media/info")
+    public ResponseEntity<List<MediaInfo>> mediasInfo(@RequestBody Ids ids) {
+        return ResponseEntity.ok().body(ids.getIds().stream().map(it -> feedbackService.mediaInfo(it)).collect(toList()));
     }
 
     @GetMapping("/media/info/{id}")

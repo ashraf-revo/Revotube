@@ -2,6 +2,8 @@ package org.revo.Controller;
 
 import org.revo.Domain.Ids;
 import org.revo.Domain.User;
+import org.revo.Domain.UserInfo;
+import org.revo.Service.FeedBackFeignService;
 import org.revo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.AuthorizationRequest;
@@ -13,6 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * Created by ashraf on 10/04/17.
@@ -24,6 +34,8 @@ public class MainController {
     private ClientDetailsService clientDetailsService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private FeedBackFeignService feedBackFeignService;
 
     @RequestMapping("/oauth/confirm_access")
     public ModelAndView getAccessConfirmation(@ModelAttribute AuthorizationRequest clientAuth, Principal user) {
@@ -59,12 +71,26 @@ public class MainController {
     @ResponseBody
     @GetMapping("/user/{id}")
     public User userById(@PathVariable("id") String id) {
-        return userService.findOne(id);
+        User one = userService.findOne(id);
+        return (one == null) ? null : addUserInfo((Arrays.asList(one))).get(0);
     }
 
     @ResponseBody
     @PostMapping("/users")
     public Iterable<User> usersByIds(@RequestBody Ids ids) {
-        return userService.findAll(ids.getIds());
+        List<User> all = StreamSupport.stream(userService.findAll(ids.getIds()).spliterator(), false).collect(toList());
+        return addUserInfo(all);
     }
+
+
+    private List<User> addUserInfo(List<User> all) {
+        Ids ids = new Ids();
+        ids.setIds(all.stream().map(User::getId).collect(toList()));
+        Map<String, UserInfo> collect = feedBackFeignService.userInfoByIds(ids).stream().collect(Collectors.toMap(UserInfo::getId, Function.identity()));
+        return all.stream().map(it -> {
+            it.setUserInfo(collect.get(it.getId()));
+            return it;
+        }).collect(toList());
+    }
+
 }

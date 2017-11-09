@@ -33,6 +33,7 @@ export class SearchComponent implements OnInit {
     })
       .subscribe(it => {
         this.search = it;
+        this.media = [];
         this.doSearch()
       });
   }

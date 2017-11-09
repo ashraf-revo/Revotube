@@ -22,6 +22,10 @@ export class TubeService {
 
   findByUserId(it: number): Observable<Media[]> {
     return this._http.get(this.url + "user/" + it).map(it => it.json());
-
   }
+
+  findOne(it: number): Observable<Media> {
+    return this._http.get(this.url + it).map(it => it.json());
+  }
+
 }

@@ -34,6 +34,7 @@ export class BaseComponent implements OnInit {
             let message = it.url.split("/");
             this.search_key = message[3].split("-").join(" ");
           }
+          else this.search_key = "";
       }
     );
 

@@ -10,5 +10,5 @@ public interface UserMediaLikeRepository extends MongoRepository<UserMediaLike, 
 
     int countByMedia(String id);
 
-    Optional<UserMediaLike> findByUserAndMedia(String user,String media);
+    Optional<UserMediaLike> findByUserIdAndMedia(String user,String media);
 }

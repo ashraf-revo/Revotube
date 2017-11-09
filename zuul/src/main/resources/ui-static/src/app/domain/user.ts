@@ -1,3 +1,5 @@
+import {UserInfo} from "./user-info";
+
 export class User {
   id: number;
   name: string;
@@ -14,4 +16,5 @@ export class User {
   accountNonLocked: boolean;
   credentialsNonExpired: boolean;
   authorities:Array<any>
+  userInfo:UserInfo
 }
