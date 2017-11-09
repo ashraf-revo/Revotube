@@ -12,19 +12,3 @@ API endpoint:   https://api.run.pivotal.io (API version: 2.98.0)
 User:           ashraf2revo@gmail.com
 Org:            ashraf2revo
 Space:          development
-[INFO] Scanning for projects...
-[INFO]                                                                         
-[INFO] ------------------------------------------------------------------------
-[INFO] Building zuul 0.0.1-SNAPSHOT
-[INFO] ------------------------------------------------------------------------
-[INFO] 
-[INFO] --- maven-clean-plugin:2.6.1:clean (default-clean) @ zuul ---
-[INFO] Deleting /media/ashraf/revo/develope/RevoTube/zuul/target
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ zuul ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] Copying 38 resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ zuul ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 1 source file to /media/ashraf/revo/develope/RevoTube/zuul/target/classes
