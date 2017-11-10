@@ -11,8 +11,9 @@ spring:
           uri: ${env.git.uri}
           username: ${env.git.username}
           password: ${env.git.password}
+          searchPaths: RevoTubeConfig
 #        native:
-#          search-locations: classpath:/shared
+          search-locations: classpath:/shared
 #  profiles:
 #     active: native
 server:

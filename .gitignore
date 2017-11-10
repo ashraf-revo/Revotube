@@ -1,5 +1,5 @@
 target/
-RevoTubeConfig/
+#RevoTubeConfig/
 !.mvn/wrapper/maven-wrapper.jar
 zuul/src/main/resources/static
 *.log
