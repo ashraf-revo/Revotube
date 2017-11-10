@@ -1,6 +1,7 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 zuul/src/main/resources/static
+*.log
 ### STS ###
 .apt_generated
 .classpath
@@ -22,3 +23,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+config/src/main/resources/templates/
+eureka/src/main/resources/templates/
+zuul/src/main/resources/ui-static/node/
