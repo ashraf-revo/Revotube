@@ -23,6 +23,4 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-config/src/main/resources/templates/
-eureka/src/main/resources/templates/
 zuul/src/main/resources/ui-static/node/
