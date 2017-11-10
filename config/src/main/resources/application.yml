@@ -8,12 +8,11 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/ashraf-revo/revotube/
-          username: ashraf1abdelrasool@gmail.com
-          password: 011202ASHra
+          uri: ${env.git.uri}
+          username: ${env.git.username}
+          password: ${env.git.password}
 #        native:
 #          search-locations: classpath:/shared
-#          search-paths: RevoTubeConfig
 #  profiles:
 #     active: native
 server:
