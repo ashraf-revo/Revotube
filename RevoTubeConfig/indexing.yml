@@ -1,0 +1,16 @@
+serverUri: http://cloudfoundry:a4976a524ad629c319aa80459c73bc07@nori-us-east-1.searchly.com
+server:
+  port: ${env.port:8084}
+  context-path: /indexing
+eureka:
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost:${server.port}}
+    statusPageUrl: ${env.schema}://${eureka.instance.hostname}${server.context-path}/info
+    healthCheckUrl: ${env.schema}://${eureka.instance.hostname}${server.context-path}/health
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+         destination: ToIndexing
+         group: s3
