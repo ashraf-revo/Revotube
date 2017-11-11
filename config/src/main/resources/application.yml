@@ -8,9 +8,9 @@ spring:
     config:
       server:
         git:
-          uri: ${env.git.uri}
-          username: ${env.git.username}
-          password: ${env.git.password}
+          uri: https://github.com/ashraf-revo/revotube
+          username: ashraf1abdelrasool@gmail.com
+          password: 011202ASHra
           searchPaths: RevoTubeConfig
 #        native:
 #          search-locations: classpath:/shared

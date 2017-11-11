@@ -6,7 +6,3 @@ applications:
   host: revotubeconfig
   buildpack: java_buildpack
   path: target/config-0.0.1-SNAPSHOT.jar
-  env:
-    ENV_GIT_URI: https://github.com/ashraf-revo/revotube
-    ENV_GIT_USERNAME: ashraf1abdelrasool@gmail.com
-    ENV_GIT_PASSWORD: 011202ASHra
