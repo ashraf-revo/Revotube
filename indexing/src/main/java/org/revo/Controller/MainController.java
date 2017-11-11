@@ -31,13 +31,13 @@ public class MainController {
 
     @PostMapping("search")
     private SearchResult search(@RequestBody Search search) throws IOException {
-        return SearchResult.builder().media(addUserInfo(mediaService.search(search))).search(search).build();
+        return SearchResult.builder().media(addUser(mediaService.search(search))).search(search).build();
     }
 
-    private List<Media> addUserInfo(List<Media> all) {
+    private List<Media> addUser(List<Media> all) {
         Ids ids = new Ids();
         ids.setIds(all.stream().map(Media::getUserId).collect(toList()));
-        Map<String, User> collect = userFeignService.usersByIds(ids).stream().collect(Collectors.toMap(User::getId, Function.identity()));
+        Map<String, User> collect = userFeignService.users(ids,false).stream().collect(Collectors.toMap(User::getId, Function.identity()));
         return all.stream().map(it -> {
             it.setUser(collect.get(it.getUserId()));
             return it;

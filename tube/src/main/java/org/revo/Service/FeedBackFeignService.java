@@ -15,5 +15,5 @@ import java.util.List;
 @FeignClient("feedback")
 public interface FeedBackFeignService {
     @PostMapping("/feedback/api/media/info")
-    List<MediaInfo> mediaInfoByIds(@RequestBody Ids ids);
+    List<MediaInfo> mediaInfo(@RequestBody Ids ids);
 }

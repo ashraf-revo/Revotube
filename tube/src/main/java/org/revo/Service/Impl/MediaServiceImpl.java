@@ -25,6 +25,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 /**
  * Created by ashraf on 15/04/17.
  */
@@ -65,13 +67,12 @@ public class MediaServiceImpl implements MediaService {
     }
 
     @Override
-    public Iterable<Media> findAll() {
-        return mediaRepository.findAll();
-    }
-
-    @Override
     public List<Media> findAll(Status status) {
-        return mediaRepository.findByStatus(status);
+        return mediaRepository.findByStatus(status).stream().map(it -> {
+            it.setSecret(null);
+            it.setM3u8(null);
+            return it;
+        }).collect(toList());
     }
 
     @Override

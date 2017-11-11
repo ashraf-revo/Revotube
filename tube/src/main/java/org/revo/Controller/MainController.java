@@ -39,48 +39,19 @@ public class MainController {
     @GetMapping
     public Iterable<Media> findAll() {
         List<Media> all = mediaService.findAll(Status.SUCCESS);
-        return addMediaInfo(addUser(addNull(all)));
-    }
-
-    private List<Media> addNull(List<Media> all) {
-        return all.stream().map(it -> {
-            it.setSecret(null);
-            it.setM3u8(null);
-            return it;
-        }).collect(toList());
-    }
-
-    private List<Media> addMediaInfo(List<Media> all) {
-        Ids ids = new Ids();
-        ids.setIds(all.stream().map(Media::getId).collect(toList()));
-        Map<String, MediaInfo> collect = feedBackFeignService.mediaInfoByIds(ids).stream().collect(Collectors.toMap(MediaInfo::getId, Function.identity()));
-
-        return all.stream().map(it -> {
-            it.setMediaInfo(collect.get(it.getId()));
-            return it;
-        }).collect(toList());
-    }
-
-    private List<Media> addUser(List<Media> all) {
-        Ids ids = new Ids();
-        ids.setIds(all.stream().map(Media::getUserId).collect(toList()));
-        Map<String, User> collect = userFeignService.usersByIds(ids).stream().collect(Collectors.toMap(User::getId, Function.identity()));
-        return all.stream().map(it -> {
-            it.setUser(collect.get(it.getUserId()));
-            return it;
-        }).collect(toList());
+        return addMediaFeedBackInfo(addUser(all, false));
     }
 
     @GetMapping("user/{id}")
     public List<Media> findAllByUser(@PathVariable("id") String id) {
         List<Media> all = mediaService.findByUser(id, Status.SUCCESS);
-        return addMediaInfo(addUser(addNull(all)));
+        return addMediaFeedBackInfo(addUser(all, false));
     }
 
     @GetMapping("{id}")
     public Media findOne(@PathVariable("id") String id) {
         Media one = mediaService.findOne(id);
-        return (one == null) ? null : addMediaInfo(addUser(addNull(Arrays.asList(one)))).get(0);
+        return (one == null) ? null : addMediaFeedBackInfo(addUser(Arrays.asList(one), false)).get(0);
     }
 
     @GetMapping("{id}.m3u8/{id}.key/")
@@ -97,4 +68,26 @@ public class MainController {
         response.setContentType("application/x-mpegURL");
         response.setHeader("Content-disposition", "attachment; filename=" + id + ".m3u8");
     }
+
+    private List<Media> addUser(List<Media> all, boolean fetchUserFeedBackInfo) {
+        Ids ids = new Ids();
+        ids.setIds(all.stream().map(Media::getUserId).collect(toList()));
+        Map<String, User> collect = userFeignService.users(ids, fetchUserFeedBackInfo).stream().collect(Collectors.toMap(User::getId, Function.identity()));
+        return all.stream().map(it -> {
+            it.setUser(collect.get(it.getUserId()));
+            return it;
+        }).collect(toList());
+    }
+
+    private List<Media> addMediaFeedBackInfo(List<Media> all) {
+        Ids ids = new Ids();
+        ids.setIds(all.stream().map(Media::getId).collect(toList()));
+        Map<String, MediaInfo> collect = feedBackFeignService.mediaInfo(ids).stream().collect(Collectors.toMap(MediaInfo::getId, Function.identity()));
+
+        return all.stream().map(it -> {
+            it.setMediaInfo(collect.get(it.getId()));
+            return it;
+        }).collect(toList());
+    }
+
 }

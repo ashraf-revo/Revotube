@@ -18,8 +18,6 @@ public interface MediaService {
 
     Media save(Media media);
 
-    Iterable<Media> findAll();
-
     List<Media> findAll(Status status);
 
     Media findOne(String id);

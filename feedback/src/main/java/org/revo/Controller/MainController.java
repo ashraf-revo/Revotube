@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -87,4 +90,15 @@ public class MainController {
         feedbackService.uncomment(id);
         return ResponseEntity.noContent().build();
     }
+
+//    private List<Media> addUser(List<Media> all, boolean fetchUserFeedBackInfo) {
+//        Ids ids = new Ids();
+//        ids.setIds(all.stream().map(Media::getUserId).collect(toList()));
+//        Map<String, User> collect = userFeignService.users(ids, fetchUserFeedBackInfo).stream().collect(Collectors.toMap(User::getId, Function.identity()));
+//        return all.stream().map(it -> {
+//            it.setUser(collect.get(it.getUserId()));
+//            return it;
+//        }).collect(toList());
+//    }
+
 }
