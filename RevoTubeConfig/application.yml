@@ -12,8 +12,6 @@ spring:
     username: rlgahcfz
     host: rhino.rmq.cloudamqp.com
     password: M_Bbzo_sQtkKofEHrW_KcTA5h2U43-bq
-  profiles:
-    active: prod
 eureka:
   instance:
     hostname: ${vcap.application.uris[0]:localhost:8080}
