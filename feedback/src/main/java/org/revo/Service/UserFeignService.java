@@ -14,6 +14,6 @@ import java.util.List;
  */
 @FeignClient("auth")
 public interface UserFeignService {
-    @PostMapping("/auth/users")
+    @PostMapping("/auth/api/users")
     List<User> users(@RequestBody Ids ids, @RequestParam(value = "fetchUserFeedBackInfo", required = false, defaultValue = "false") boolean fetchUserFeedBackInfo);
 }
