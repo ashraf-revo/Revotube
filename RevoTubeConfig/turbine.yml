@@ -1,8 +1,7 @@
 server:
-  port: ${env.port}
   context-path: /turbine
 eureka:
   instance:
-    hostname: ${vcap.application.uris[0]:localhost:${server.port}}
+    hostname: ${vcap.application.uris[0]:localhost:${env.port}}
     statusPageUrl: ${env.schema}://${eureka.instance.hostname}${server.context-path}/info
     healthCheckUrl: ${env.schema}://${eureka.instance.hostname}${server.context-path}/health
