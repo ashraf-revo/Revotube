@@ -18,7 +18,7 @@ export class UserService {
   }
 
   findOne(id: number): Observable<User> {
-    return this._http.get(this.url + "user/" + id + "?fetchUserFeedBackInfo=true").map(it => it.json());
+    return this._http.get(this.url + "api/user/" + id + "?fetchUserFeedBackInfo=true").map(it => it.json());
   }
 
   logout(): Observable<Response> {
