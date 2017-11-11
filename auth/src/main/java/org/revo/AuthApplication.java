@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableMongoAuditing
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableHystrix
 @EnableConfigurationProperties(Env.class)
 public class AuthApplication {
     public static void main(String[] args) {
