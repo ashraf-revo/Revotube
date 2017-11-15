@@ -11,8 +11,8 @@ spring:
     mongodb:
       database: CloudFoundry_7njjtl29_dknlgqb0
       port: 35775
-      password: anU92lYaCEi_8OQ7t31-VxvLLdVMeVHJ
-      username: CloudFoundry_7njjtl29_dknlgqb0_b95i43o8
+      password: OEUT2boVXFf3GmmfxyU8YoT4X7DgwyqE
+      username: CloudFoundry_7njjtl29_dknlgqb0_6v883sh8
       host: ds235775.mlab.com
   cloud:
     stream:

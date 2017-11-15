@@ -12,8 +12,8 @@ spring:
     mongodb:
       database: CloudFoundry_7njjtl29_n4b5s4hv
       port: 35065
-      password: fXO59JBQ-U4dn1COQh2TwhYVeWPO8p3l
-      username: CloudFoundry_7njjtl29_n4b5s4hv_kakn5v66
+      password: cMgki4oO0NJ4K1Dx22U7SWJsUWpHJG9z
+      username: CloudFoundry_7njjtl29_n4b5s4hv_2ev76rnj
       host: ds235065.mlab.com
   redis:
     host: redis-16411.c15.us-east-1-4.ec2.cloud.redislabs.com

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-data=('config' 'eureka' 'auth' 'zuul' 'tube' 'bento4' 'indexing' 'feedback')
+data=('config' 'eureka' 'auth' 'bento4' 'indexing' 'feedback' 'tube' 'zuul')
 locations=( [0]=1 [1]=1 [2]=2 [3]=2 [4]=3 [5]=3 [6]=4 [7]=4)
 password="01120266849ASHra;"
 prefix="ashraf"
@@ -19,6 +19,11 @@ function deploy(){
 	mvn clean install -DskipTests=true>>"${data[$1]}.log"
 	cf push>>"${data[$1]}.log"
 	cd -
+}
+
+function delete(){
+    login $1
+    cf delete -r -f  ${data[$1]}
 }
 
 function start(){
