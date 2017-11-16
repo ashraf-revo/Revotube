@@ -22,4 +22,6 @@ public interface UserService {
     User findOne(String id);
 
     Iterable<User> findAll(List<String> ids);
+
+    void activate(String id);
 }

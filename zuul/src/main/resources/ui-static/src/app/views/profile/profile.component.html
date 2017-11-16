@@ -24,8 +24,7 @@
             </div>
           </div>
 
-          <!--&&user.id!=id-->
-          <div class="btn-group btn-group-justified m-b" *ngIf="isAuth&&user">
+          <div class="btn-group btn-group-justified m-b" *ngIf="isAuth&&user&&user.id!=id">
             <a class="btn btn-success btn-rounded" (click)="followOrUnFollow()">
               <span class="text" [ngClass]="{'text-active': isFollow}">
                 <i class="fa fa-eye"></i> Follow

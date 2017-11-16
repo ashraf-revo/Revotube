@@ -4,6 +4,10 @@ import org.revo.Domain.User;
 import org.revo.Repository.UserRepository;
 import org.revo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +23,8 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @Autowired
     private PasswordEncoder encoder;
+    @Autowired
+    public MongoOperations mongoOperations;
 
     @Override
     public Optional<User> findByEmail(String email) {
@@ -58,4 +64,13 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll(ids);
     }
 
+    @Override
+    public void activate(String id) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("id").is(id).and("type").is("000"));
+        Update update = new Update();
+        update.set("enable", true);
+        update.set("type", "110");
+        mongoOperations.updateFirst(query, update, User.class);
+    }
 }

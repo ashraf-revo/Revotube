@@ -47,8 +47,8 @@ public class MainController {
     }
 
     @GetMapping("activate/{id}")
-    public String modelAndView(@PathVariable Long id) {
-//        userService.activate(id);
+    public String modelAndView(@PathVariable String id) {
+        userService.activate(id);
         return "redirect:/done?message=successfully+activate+your+account+you+are+welcome";
     }
 
