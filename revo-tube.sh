@@ -63,7 +63,7 @@ function readValue()
 function main(){
 for i in "${!result[@]}"
 do
-    echo "${method}  ${data[result[i]]}"
+    echo "${method} --> ${data[result[i]]}"
     ${method} "${result[i]}"
 done
 }
