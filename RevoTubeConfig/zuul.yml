@@ -33,3 +33,10 @@ zuul:
         end-points: /ws
         brokers:  /topic
         destination-prefixes: /app
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
