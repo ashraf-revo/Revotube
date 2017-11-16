@@ -9,8 +9,8 @@
       class="img-circle" alt="..."></a>
       <section class="chat-body">
         <form class="m-b-none">
-          <div class="input-group"><input type="text" [(ngModel)]="commentText" name="commentText" class="form-control" placeholder="Say something">
-            <span class="input-group-btn"> <button (click)="comment()"  class="btn btn-default" type="button">SEND</button> </span>
+          <div class="input-group"><input type="text" [disabled]="!isAuth" [(ngModel)]="commentText" name="commentText" class="form-control" placeholder="Say something">
+            <span class="input-group-btn"> <button (click)="comment()" [disabled]="!isAuth"  class="btn btn-default" type="button">SEND</button> </span>
           </div>
         </form>
       </section>

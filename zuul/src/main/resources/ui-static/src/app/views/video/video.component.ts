@@ -20,6 +20,7 @@ export class VideoComponent implements OnInit {
   public commentText: string = '';
   public umc: UserMediaComment[] = [];
   public feedBackService: FeedbackService;
+
   constructor(private _activatedRoute: ActivatedRoute, private _tubeService: TubeService, private _feedBackService: FeedbackService, private _authService: AuthService) {
     this.feedBackService = this._feedBackService;
   }
@@ -69,7 +70,13 @@ export class VideoComponent implements OnInit {
   }
 
   likeOrUnLike() {
-    if (this.isLiked) this.unlike(); else this.like()
+    if (this.isAuth) {
+      if (this.isLiked) {
+        this.unlike();
+      } else {
+        this.like()
+      }
+    }
   }
 
   liked() {

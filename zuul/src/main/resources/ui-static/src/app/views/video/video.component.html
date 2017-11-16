@@ -27,7 +27,7 @@
                       <a class="m-l-sm">
                         <i class="fa fa-comment-o text-danger"></i> {{m.mediaInfo.comments}}
                       </a>
-                      <a class="m-l-sm" (click)="likeOrUnLike()">
+                      <a class="m-l-sm btn btn-sm" style="padding: unset" [ngClass]="{'disabled':!isAuth}" (click)="likeOrUnLike()">
                         <i class="fa  icon-like text-danger"></i> {{m.mediaInfo.likes}}
                       </a>
                       <a class="m-l-sm">
