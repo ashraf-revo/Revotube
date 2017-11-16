@@ -51,7 +51,7 @@ export class FeedbackService {
   }
 
   followed(id: string): Observable<boolean> {
-    return this._http.post(this.url + "user/follow/" + id, null).map(it => it.status == 200);
+    return this._http.post(this.url + "user/followed/" + id, null).map(it => it.status == 200);
   }
 
   unfollow(id: string): Observable<Response> {

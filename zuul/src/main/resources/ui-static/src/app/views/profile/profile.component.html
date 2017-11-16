@@ -24,10 +24,16 @@
             </div>
           </div>
 
-
-          <div class="btn-group btn-group-justified m-b"><a class="btn btn-success btn-rounded" data-toggle="button">
-            <span class="text"> <i class="fa fa-eye"></i> Follow </span> <span class="text-active"> <i
-            class="fa fa-eye"></i> Following </span> </a>
+          <!--&&user.id!=id-->
+          <div class="btn-group btn-group-justified m-b" *ngIf="isAuth&&user">
+            <a class="btn btn-success btn-rounded" (click)="followOrUnFollow()">
+              <span class="text" [ngClass]="{'text-active': isFollow}">
+                <i class="fa fa-eye"></i> Follow
+              </span>
+              <span class="text" [ngClass]="{'text-active': !isFollow}">
+                <i class="fa fa-eye"></i> Following
+              </span>
+            </a>
           </div>
 
 
