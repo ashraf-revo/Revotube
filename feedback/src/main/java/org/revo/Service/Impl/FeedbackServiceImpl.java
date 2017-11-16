@@ -77,7 +77,10 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     @Override
     public UserMediaComment comment(String id, String message) {
-        return userMediaCommentRepository.save(UserMediaComment.builder().media(id).message(message).build());
+        UserMediaComment userMediaComment = new UserMediaComment();
+        userMediaComment.setMedia(id);
+        userMediaComment.setMessage(message);
+        return userMediaCommentRepository.save(userMediaComment);
     }
 
     @Override
@@ -88,6 +91,11 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     public boolean liked(String id) {
         return userMediaLikeRepository.findByUserIdAndMedia(userService.current(), id).isPresent();
+    }
+
+    @Override
+    public boolean followed(String id) {
+        return userUserFollowRepository.findByFromAndTo(userService.current(), id).isPresent();
     }
 
 }

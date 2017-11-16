@@ -26,4 +26,6 @@ public interface FeedbackService {
     void uncomment(String id);
 
     boolean liked(String id);
+
+    boolean followed(String id);
 }

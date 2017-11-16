@@ -26,12 +26,16 @@ export class FeedbackService {
     return this._http.get(this.url + "media/info/" + id).map(it => it.json());
   }
 
-  Comments(id: string): Observable<UserMediaComment[]> {
+  comments(id: string): Observable<UserMediaComment[]> {
     return this._http.get(this.url + "media/comments/" + id).map(it => it.json());
   }
 
   like(id: string): Observable<UserMediaLike> {
     return this._http.post(this.url + "media/like/" + id, null).map(it => it.json());
+  }
+
+  liked(id: string): Observable<boolean> {
+    return this._http.post(this.url + "media/liked/" + id, null).map(it => it.status == 200);
   }
 
   unlike(id: string): Observable<Response> {
@@ -46,12 +50,16 @@ export class FeedbackService {
     return this._http.post(this.url + "user/follow/" + id, null).map(it => it.json());
   }
 
+  followed(id: string): Observable<boolean> {
+    return this._http.post(this.url + "user/follow/" + id, null).map(it => it.status == 200);
+  }
+
   unfollow(id: string): Observable<Response> {
     return this._http.post(this.url + "user/unfollow/" + id, null);
   }
 
-  comment(id: string, message: string): Observable<UserMediaComment> {
-    return this._http.post(this.url + "media/comment/" + id, {'message': message}).map(it => it.json());
+  comment(id: string, userMediaComment: UserMediaComment): Observable<UserMediaComment> {
+    return this._http.post(this.url + "media/comment/" + id, userMediaComment).map(it => it.json());
   }
 
   uncomment(id: string): Observable<Response> {

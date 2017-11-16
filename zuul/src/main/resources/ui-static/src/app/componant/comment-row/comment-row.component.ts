@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {UserMediaComment} from "../../domain/user-media-comment";
 
 @Component({
   selector: 'rt-comment-row',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./comment-row.component.css']
 })
 export class CommentRowComponent implements OnInit {
+  @Input()
+  umc: UserMediaComment;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

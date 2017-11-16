@@ -27,7 +27,7 @@
                       <a class="m-l-sm">
                         <i class="fa fa-comment-o text-danger"></i> {{m.mediaInfo.comments}}
                       </a>
-                      <a class="m-l-sm">
+                      <a class="m-l-sm" (click)="likeOrUnLike()">
                         <i class="fa  icon-like text-danger"></i> {{m.mediaInfo.likes}}
                       </a>
                       <a class="m-l-sm">
@@ -41,7 +41,7 @@
             </div>
             <div class="col-sm-5">
               <div>
-                <rt-comments-box></rt-comments-box>
+                <rt-comments-box [userMediaComments]="umc" [id]="id" [feedBackService]="feedBackService" [isAuth]="isAuth"></rt-comments-box>
               </div>
             </div>
           </div>

@@ -1,6 +1,9 @@
+import {User} from "./user";
+
 export class UserMediaComment {
   id: string;
-  user: string;
+  userId: string;
+  user: User;
   media: string;
   createdDate: Date;
   message: string;
