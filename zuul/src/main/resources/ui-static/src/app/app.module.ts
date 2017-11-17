@@ -17,7 +17,7 @@ import {TubeService} from "./services/tube.service";
 import {DefaultService} from "./services/default.service";
 import {UserService} from "./services/user.service";
 import {AuthService} from "./services/auth.service";
-import {DiscoverComponent} from "./views/discover/discover.component";
+import {TrendingComponent} from "./views/trending/trending.component";
 import {VideoComponent} from "./views/video/video.component";
 import {ProfileComponent} from "./views/profile/profile.component";
 import {SettingsComponent} from "./views/settings/settings.component";
@@ -46,7 +46,7 @@ import { CommentsBoxComponent } from './componant/comments-box/comments-box.comp
     BaseComponent,
     HomeComponent,
     ErrorComponent,
-    DiscoverComponent,
+    TrendingComponent,
     VideoComponent,
     ProfileComponent,
     SettingsComponent,

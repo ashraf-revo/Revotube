@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {AuthUser} from "../../domain/auth-user";
 
 @Component({
   selector: 'rt-nav',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  @Input()
+  public authUser: AuthUser;
 
   constructor() { }
 
