@@ -49,6 +49,27 @@ function print(){
     done
     echo "";
 }
+
+function create-services(){
+    login $1
+    cf create-service mlab sandbox tubemongo
+    cf create-service mlab sandbox feedbackmongo
+    cf create-service mlab sandbox authmongo
+    cf create-service cloudamqp lemur queue
+    cf create-service rediscloud 30mb authredis
+    cf create-service searchly starter indexingelastic
+}
+
+function delete-services(){
+    login $1
+    cf delete-service tubemongo
+    cf delete-service feedbackmongo
+    cf delete-service authmongo
+    cf delete-service queue
+    cf delete-service authredis
+    cf delete-service indexingelastic
+}
+
 function readValue()
 {
     if [[   -z  $1 || -z  $2  ]];then
