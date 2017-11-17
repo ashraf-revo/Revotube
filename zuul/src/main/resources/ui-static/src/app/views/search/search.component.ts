@@ -15,11 +15,9 @@ export class SearchComponent implements OnInit {
   public search: Search = new Search();
 
   constructor(private _activatedRoute: ActivatedRoute, private _indexingService: IndexingService, private _location: Location) {
-    console.log("con loaded")
   }
 
   more() {
-    console.log("more");
     this.search.page += 1;
     this.doSearch()
   }
@@ -44,8 +42,6 @@ export class SearchComponent implements OnInit {
         this.media.push(itm)
       });
       this._location.replaceState("/search/" + this.search.page + "/" + (this.search.search_key.split(" ").join("-")));
-      console.log("will print all");
-      this.media.forEach(it => console.log(it))
     });
   }
 }
