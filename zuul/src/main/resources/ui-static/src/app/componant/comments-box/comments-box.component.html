@@ -4,13 +4,16 @@
     <rt-comment-row *ngFor="let umc of userMediaComments" [umc]="umc"></rt-comment-row>
   </section>
   <footer class="panel-footer">
-    <article class="chat-item" id="chat-form"><a class="pull-left thumb-sm avatar"><img
-      src="https://s3-eu-west-1.amazonaws.com/static-revo/static/assets/images/a5.jpg"
-      class="img-circle" alt="..."></a>
+    <article class="chat-item" id="chat-form"><a class="pull-left thumb-sm avatar">
+      <img
+        [src]="isAuth?authUser.user.imageUrl:'https://s3-eu-west-1.amazonaws.com/static-revo/static/assets/images/a5.jpg'"
+        class="img-circle" alt="..."></a>
       <section class="chat-body">
         <form class="m-b-none">
-          <div class="input-group"><input type="text" [disabled]="!isAuth" [(ngModel)]="commentText" name="commentText" class="form-control" placeholder="Say something">
-            <span class="input-group-btn"> <button (click)="comment()" [disabled]="!isAuth"  class="btn btn-default" type="button">SEND</button> </span>
+          <div class="input-group"><input type="text" [disabled]="!isAuth" [(ngModel)]="commentText" name="commentText"
+                                          class="form-control" placeholder="Say something">
+            <span class="input-group-btn"> <button (click)="comment()" [disabled]="!isAuth" class="btn btn-default"
+                                                   type="button">SEND</button> </span>
           </div>
         </form>
       </section>

@@ -6,6 +6,7 @@ import {User} from "../../domain/user";
 import {Media} from "../../domain/media";
 import {AuthService} from "../../services/auth.service";
 import {FeedbackService} from "../../services/feedback.service";
+import {AuthUser} from "../../domain/auth-user";
 
 @Component({
   selector: 'rt-profile',
@@ -14,6 +15,7 @@ import {FeedbackService} from "../../services/feedback.service";
 })
 export class ProfileComponent implements OnInit {
   public user: User;
+  public authUser: AuthUser;
   public media: Media[] = [];
   public showClickFollow: boolean = false;
   public isFollow: boolean = false;
@@ -26,13 +28,14 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.isAuth = this._authService.getIsAuth();
-
+    this.authUser = this._authService.getAuthUser();
     this._activatedRoute.params.map((it: Params) => it['id'])
       .filter(it => this._authService.getIsAuth())
       .flatMap(it => this._feedbackService.followed(it))
       .subscribe(it => {
         console.log(it);
-        this.isFollow = it;});
+        this.isFollow = it;
+      });
 
     this._activatedRoute.params.map((it: Params) => it['id']).subscribe(it => {
       this.id = it;
@@ -50,14 +53,14 @@ export class ProfileComponent implements OnInit {
   follow() {
     this._feedbackService.follow(this.id).subscribe(it => {
       this.user.userInfo.followers += 1;
-      this.isFollow=true;
+      this.isFollow = true;
     })
   }
 
   unFollow() {
     this._feedbackService.unfollow(this.id).subscribe(it => {
       this.user.userInfo.followers -= 1;
-      this.isFollow=false;
+      this.isFollow = false;
     })
   }
 

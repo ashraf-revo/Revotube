@@ -20,9 +20,11 @@ export class VideoComponent implements OnInit {
   public commentText: string = '';
   public umc: UserMediaComment[] = [];
   public feedBackService: FeedbackService;
+  public authService: AuthService;
 
   constructor(private _activatedRoute: ActivatedRoute, private _tubeService: TubeService, private _feedBackService: FeedbackService, private _authService: AuthService) {
     this.feedBackService = this._feedBackService;
+    this.authService = _authService;
   }
 
   comments() {

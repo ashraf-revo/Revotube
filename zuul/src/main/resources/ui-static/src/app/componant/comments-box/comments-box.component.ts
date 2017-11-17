@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FeedbackService} from "../../services/feedback.service";
 import {UserMediaComment} from "../../domain/user-media-comment";
+import {AuthService} from "../../services/auth.service";
+import {User} from "../../domain/user";
+import {AuthUser} from "../../domain/auth-user";
 
 @Component({
   selector: 'rt-comments-box',
@@ -15,11 +18,14 @@ export class CommentsBoxComponent implements OnInit {
   public userMediaComments: UserMediaComment[] = [];
   @Input()
   id: string;
-  @Input()
   public isAuth: boolean = false;
-
+  @Input()
+  public authService: AuthService;
+  public authUser: AuthUser;
 
   constructor() {
+    this.isAuth = this.authService.getIsAuth();
+    this.authUser = this.authService.getAuthUser();
   }
 
   ngOnInit() {
@@ -27,7 +33,7 @@ export class CommentsBoxComponent implements OnInit {
   }
 
   comment() {
-    if (this.isAuth&&this.commentText.trim().length != 0) {
+    if (this.isAuth && this.commentText.trim().length != 0) {
       let umc: UserMediaComment = new UserMediaComment();
       umc.message = this.commentText;
       this.feedBackService.comment(this.id, umc).subscribe(it => {
