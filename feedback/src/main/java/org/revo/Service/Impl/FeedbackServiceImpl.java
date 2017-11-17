@@ -29,9 +29,8 @@ public class FeedbackServiceImpl implements FeedbackService {
     public UserInfo userInfo(String id) {
         return UserInfo.builder()
                 .id(id)
-                .followers(userUserFollowRepository.countByFrom(id))
-//        userService.current()
-                .following(userUserFollowRepository.countByTo(id))
+                .followers(userUserFollowRepository.countByTo(id))
+                .following(userUserFollowRepository.countByFrom(id))
                 .build();
     }
 
