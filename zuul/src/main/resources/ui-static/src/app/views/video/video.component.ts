@@ -5,6 +5,7 @@ import {Media} from "../../domain/media";
 import {FeedbackService} from "../../services/feedback.service";
 import {AuthService} from "../../services/auth.service";
 import {UserMediaComment} from "../../domain/user-media-comment";
+import {AuthUser} from "../../domain/auth-user";
 
 
 @Component({
@@ -21,11 +22,13 @@ export class VideoComponent implements OnInit {
   public umc: UserMediaComment[] = [];
   public feedBackService: FeedbackService;
   public authService: AuthService;
+  public authUser: AuthUser;
 
   constructor(private _activatedRoute: ActivatedRoute, private _tubeService: TubeService, private _feedBackService: FeedbackService, private _authService: AuthService) {
     this.feedBackService = this._feedBackService;
     this.authService = this._authService;
     this.isAuth = this._authService.getIsAuth();
+    this.authUser=this._authService.getAuthUser();
   }
 
   comments() {

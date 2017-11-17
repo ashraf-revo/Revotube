@@ -33,7 +33,6 @@ export class ProfileComponent implements OnInit {
       .filter(it => this._authService.getIsAuth())
       .flatMap(it => this._feedbackService.followed(it))
       .subscribe(it => {
-        console.log(it);
         this.isFollow = it;
       });
 

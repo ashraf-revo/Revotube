@@ -18,14 +18,12 @@ export class CommentsBoxComponent implements OnInit {
   public userMediaComments: UserMediaComment[] = [];
   @Input()
   id: string;
+  @Input()
   public isAuth: boolean = false;
   @Input()
-  public authService: AuthService;
   public authUser: AuthUser;
 
   constructor() {
-    this.isAuth = this.authService.getIsAuth();
-    this.authUser = this.authService.getAuthUser();
   }
 
   ngOnInit() {
