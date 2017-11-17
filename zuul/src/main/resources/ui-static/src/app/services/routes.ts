@@ -8,6 +8,7 @@ import {ProfileComponent} from "../views/profile/profile.component";
 import {SettingsComponent} from "../views/settings/settings.component";
 import {UploadComponent} from "../views/upload/upload.component";
 import {SearchComponent} from "../views/search/search.component";
+
 export const routes: Routes = [
   {
     path: '', component: BaseComponent, children: [

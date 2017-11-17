@@ -61,7 +61,6 @@ import { CommentsBoxComponent } from './componant/comments-box/comments-box.comp
     CommentRowComponent,
     PlayerComponent,
     CommentsBoxComponent,
-
   ],
   imports: [VgStreamingModule,
     VgCoreModule,
