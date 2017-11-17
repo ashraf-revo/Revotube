@@ -31,7 +31,7 @@ public class User extends BaseUser {
     private String id;
     @NotBlank
     private String name;
-    private String imageUrl = "/assets/images/a0.png";
+    private String imageUrl = "https://s3-eu-west-1.amazonaws.com/static-revo/static/assets/images/a5.jpg";
     @NotBlank
     private String phone;
     private String info;
