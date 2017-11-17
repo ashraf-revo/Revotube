@@ -24,7 +24,8 @@ export class VideoComponent implements OnInit {
 
   constructor(private _activatedRoute: ActivatedRoute, private _tubeService: TubeService, private _feedBackService: FeedbackService, private _authService: AuthService) {
     this.feedBackService = this._feedBackService;
-    this.authService = _authService;
+    this.authService = this._authService;
+    this.isAuth = this._authService.getIsAuth();
   }
 
   comments() {
