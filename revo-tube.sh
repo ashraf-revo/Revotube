@@ -9,7 +9,7 @@ last_key=-1
 
 function login(){
     if(($last_key!=${locations[$1]}));then
-        cf login -u $prefix${locations[$1]}$suffix -p $password -a api.run.pivotal.io>>"${data[$1]}/${data[$1]}.log"
+        cf login -u $prefix${locations[$1]}$suffix -p $password -a api.run.pivotal.io>"${data[$1]}/${data[$1]}.log"
     fi
     last_key=${locations[$1]}
 }
