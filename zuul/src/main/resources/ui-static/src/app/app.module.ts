@@ -37,6 +37,8 @@ import { VideoRowSearchComponent } from './componant/video-row-search/video-row-
 import { CommentRowComponent } from './componant/comment-row/comment-row.component';
 import { PlayerComponent } from './componant/player/player.component';
 import { CommentsBoxComponent } from './componant/comments-box/comments-box.component';
+import { UserRowComponent } from './componant/user-row/user-row.component';
+import { SubscriptionsComponent } from './views/subscriptions/subscriptions.component';
 
 
 @NgModule({
@@ -61,6 +63,8 @@ import { CommentsBoxComponent } from './componant/comments-box/comments-box.comp
     CommentRowComponent,
     PlayerComponent,
     CommentsBoxComponent,
+    UserRowComponent,
+    SubscriptionsComponent,
   ],
   imports: [VgStreamingModule,
     VgCoreModule,

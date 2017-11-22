@@ -26,6 +26,16 @@ public class FeedbackServiceImpl implements FeedbackService {
     private UserUserFollowRepository userUserFollowRepository;
 
     @Override
+    public List<UserUserFollow> followers(String id) {
+        return userUserFollowRepository.findByTo(id);
+    }
+
+    @Override
+    public List<UserUserFollow> following(String id) {
+        return userUserFollowRepository.findByFrom(id);
+    }
+
+    @Override
     public UserInfo userInfo(String id) {
         return UserInfo.builder()
                 .id(id)

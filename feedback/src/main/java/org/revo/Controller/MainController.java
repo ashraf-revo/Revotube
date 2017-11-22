@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -31,6 +32,18 @@ public class MainController {
     @GetMapping("/user/info/{id}")
     public ResponseEntity<UserInfo> userInfo(@PathVariable("id") String id) {
         return ResponseEntity.ok(feedbackService.userInfo(id));
+    }
+
+    @GetMapping("/user/followers/{id}")
+    public ResponseEntity<List<User>> userFollowers(@PathVariable("id") String id) {
+        List<String> collect = feedbackService.followers(id).stream().map(UserUserFollow::getFrom).collect(toList());
+        return ResponseEntity.ok(userFeignService.users(new Ids(collect), false));
+    }
+
+    @GetMapping("/user/following/{id}")
+    public ResponseEntity<List<User>> userFollowing(@PathVariable("id") String id) {
+        List<String> collect = feedbackService.following(id).stream().map(UserUserFollow::getTo).collect(toList());
+        return ResponseEntity.ok(userFeignService.users(new Ids(collect), false));
     }
 
     @PostMapping("/user/info")

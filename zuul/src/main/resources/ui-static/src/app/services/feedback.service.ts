@@ -9,6 +9,7 @@ import {UserMediaComment} from "../domain/user-media-comment";
 import {UserMediaLike} from "../domain/user-media-like";
 import {UserMediaView} from "../domain/user-media-view";
 import {UserUserFollow} from "../domain/user-user-follow";
+import {User} from "../domain/user";
 
 @Injectable()
 export class FeedbackService {
@@ -16,6 +17,14 @@ export class FeedbackService {
 
   constructor(private _http: Http, private _defaultService: DefaultService) {
     this.url = this._defaultService.url + this.url;
+  }
+
+  followers(id: string): Observable<User[]> {
+    return this._http.get(this.url + "user/followers/" + id).map(it => it.json())
+  }
+
+  following(id: string): Observable<User[]> {
+    return this._http.get(this.url + "user/following/" + id).map(it => it.json())
   }
 
   userInfo(id: string): Observable<UserInfo> {

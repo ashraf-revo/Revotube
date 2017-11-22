@@ -5,6 +5,10 @@ import org.revo.Domain.*;
 import java.util.List;
 
 public interface FeedbackService {
+    List<UserUserFollow> followers(String id);
+
+    List<UserUserFollow> following(String id);
+
     UserInfo userInfo(String id);
 
     MediaInfo mediaInfo(String id);

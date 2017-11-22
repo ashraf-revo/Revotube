@@ -53,7 +53,6 @@ export class BaseComponent implements OnInit {
 
     this._userService.currentUser().subscribe(it => {
         this._authService.setAuth(it, true);
-        this.authUser = this._authService.getAuthUser()
       }
       , it => {
         this._authService.setAuth(null, false);

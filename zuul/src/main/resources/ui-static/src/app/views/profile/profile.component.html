@@ -59,13 +59,17 @@
               <rt-video-row *ngFor="let m of media" [media]="m"></rt-video-row>
             </ul>
           </div>
+          <!--<i class="fa fa-spinner fa fa-spin fa fa-large"></i>-->
+
           <div class="tab-pane" id="followers">
-            <div class="text-center wrapper"><i
-              class="fa fa-spinner fa fa-spin fa fa-large"></i></div>
+            <div class="text-center wrapper">
+              <rt-user-row *ngFor="let f of followers" [user]="f"></rt-user-row>
+            </div>
           </div>
           <div class="tab-pane" id="following">
-            <div class="text-center wrapper"><i
-              class="fa fa-spinner fa fa-spin fa fa-large"></i></div>
+            <div class="text-center wrapper">
+              <rt-user-row *ngFor="let f of following" [user]="f"></rt-user-row>
+            </div>
           </div>
         </div>
       </section>

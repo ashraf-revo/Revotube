@@ -8,6 +8,7 @@ import {ProfileComponent} from "../views/profile/profile.component";
 import {SettingsComponent} from "../views/settings/settings.component";
 import {UploadComponent} from "../views/upload/upload.component";
 import {SearchComponent} from "../views/search/search.component";
+import {SubscriptionsComponent} from "../views/subscriptions/subscriptions.component";
 
 export const routes: Routes = [
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'search/:page/:search_key', component: SearchComponent},
     {path: 'trending', component: TrendingComponent},
+    {path: 'subscriptions', component: SubscriptionsComponent},
     {path: 'settings', component: SettingsComponent},
     {path: 'upload', component: UploadComponent},
     {path: 'video/:id', component: VideoComponent},

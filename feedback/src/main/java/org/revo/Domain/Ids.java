@@ -9,4 +9,11 @@ import java.util.List;
 @Setter
 public class Ids {
     private List<String> ids;
+
+    public Ids() {
+    }
+
+    public Ids(List<String> ids) {
+        this.ids = ids;
+    }
 }

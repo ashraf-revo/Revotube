@@ -21,6 +21,8 @@ export class ProfileComponent implements OnInit {
   public isFollow: boolean = false;
   public isAuth: boolean = false;
   public id: string;
+  public followers: User[] = [];
+  public following: User[] = [];
 
   constructor(private _userService: UserService, private _tubeService: TubeService, private _activatedRoute: ActivatedRoute, private _authService: AuthService, private _feedbackService: FeedbackService) {
 
@@ -46,6 +48,14 @@ export class ProfileComponent implements OnInit {
     });
     this._activatedRoute.params.map((it: Params) => it['id']).flatMap(it => this._tubeService.findByUserId(it)).subscribe(it => {
       this.media = it;
+    });
+
+    this._activatedRoute.params.map((it: Params) => it['id']).flatMap(it => this._feedbackService.followers(it)).subscribe(it => {
+      this.followers = it;
+    });
+
+    this._activatedRoute.params.map((it: Params) => it['id']).flatMap(it => this._feedbackService.following(it)).subscribe(it => {
+      this.following = it;
     });
   }
 
