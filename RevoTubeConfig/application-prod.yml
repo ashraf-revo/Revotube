@@ -1,2 +1,7 @@
 env:
-  prod: true
+  eureka:
+    host: https://revo:revo@revotubeeureka.cfapps.io/eureka/
+  auth:
+    host: https://revotubeauth.cfapps.io/auth/
+  schema: https
+  port: 8080

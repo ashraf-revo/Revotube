@@ -1,0 +1,6 @@
+env:
+  eureka:
+    host: http://revo:revo@http://localhost:8761/eureka/
+  auth:
+    host: http://http://localhost:9999/auth/
+  schema: http
