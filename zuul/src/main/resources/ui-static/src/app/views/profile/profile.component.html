@@ -62,14 +62,17 @@
           <!--<i class="fa fa-spinner fa fa-spin fa fa-large"></i>-->
 
           <div class="tab-pane" id="followers">
-            <div class="text-center wrapper">
+            <!--<div class="text-center wrapper">-->
+            <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
               <rt-user-row *ngFor="let f of followers" [user]="f"></rt-user-row>
-            </div>
+            </ul>
+            <!--</div>-->
           </div>
           <div class="tab-pane" id="following">
-            <div class="text-center wrapper">
+            <!--<div class="text-center wrapper">-->
+            <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
               <rt-user-row *ngFor="let f of following" [user]="f"></rt-user-row>
-            </div>
+            </ul>            <!--</div>-->
           </div>
         </div>
       </section>

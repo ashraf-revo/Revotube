@@ -1,7 +1,7 @@
 import {UserInfo} from "./user-info";
 
 export class User {
-  id: number;
+  id: string;
   name: string;
   imageUrl: string;
   phone: string;

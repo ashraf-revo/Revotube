@@ -20,6 +20,8 @@ public interface MediaService {
 
     List<Media> findAll(Status status);
 
+    List<Media> findAll(Status status, List<String> ids);
+
     Media findOne(String id);
 
     String findOneParsed(String id);

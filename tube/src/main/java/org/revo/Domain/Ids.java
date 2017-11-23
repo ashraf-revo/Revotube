@@ -8,5 +8,12 @@ import java.util.List;
 @Getter
 @Setter
 public class Ids {
+    public Ids() {
+    }
+
+    public Ids(List<String> ids) {
+        this.ids = ids;
+    }
+
     private List<String> ids;
 }

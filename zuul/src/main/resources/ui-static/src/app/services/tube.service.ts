@@ -20,6 +20,10 @@ export class TubeService {
     return this._http.get(this.url).map(it => it.json());
   }
 
+  subscriptions(): Observable<Media[]> {
+    return this._http.get(this.url + "subscriptions").map(it => it.json());
+  }
+
   findByUserId(it: number): Observable<Media[]> {
     return this._http.get(this.url + "user/" + it).map(it => it.json());
   }

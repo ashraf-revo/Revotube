@@ -14,6 +14,8 @@ public interface MediaRepository extends CrudRepository<Media, String> {
 
     List<Media> findByStatus(Status status);
 
+    List<Media> findByStatusAndUserIdIn(Status status, List<String> ids);
+
     List<Media> findByUserIdAndStatus(String id, Status status);
 
 /*

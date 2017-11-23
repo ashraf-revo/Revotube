@@ -10,9 +10,12 @@
             <rt-animate-bar></rt-animate-bar>
             Subscriptions
           </h2>
-          <div class="row">
-          </div>
+
+          <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+            <rt-video-row-search *ngFor="let m of media" [media]="m"></rt-video-row-search>
+          </ul>
         </div>
+
       </section>
     </section>
   </aside>

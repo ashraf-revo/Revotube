@@ -4,6 +4,7 @@ import org.revo.Domain.*;
 import org.revo.Service.FeedBackFeignService;
 import org.revo.Service.MediaService;
 import org.revo.Service.UserFeignService;
+import org.revo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,8 @@ public class MainController {
     private UserFeignService userFeignService;
     @Autowired
     private FeedBackFeignService feedBackFeignService;
+    @Autowired
+    private UserService userService;
 
     @PostMapping("save")
     private Media save(@ModelAttribute Media media) throws IOException {
@@ -39,6 +42,12 @@ public class MainController {
     @GetMapping
     public Iterable<Media> findAll() {
         List<Media> all = mediaService.findAll(Status.SUCCESS);
+        return addMediaFeedBackInfo(addUser(all, false));
+    }
+
+    @GetMapping("subscriptions")
+    public Iterable<Media> subscriptions() {
+        List<Media> all = mediaService.findAll(Status.SUCCESS, feedBackFeignService.userFollowingTo(userService.current()).getIds());
         return addMediaFeedBackInfo(addUser(all, false));
     }
 

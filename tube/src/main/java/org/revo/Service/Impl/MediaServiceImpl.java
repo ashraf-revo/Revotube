@@ -76,6 +76,16 @@ public class MediaServiceImpl implements MediaService {
     }
 
     @Override
+    public List<Media> findAll(Status status, List<String> ids) {
+        return mediaRepository.findByStatusAndUserIdIn(status, ids).stream().map(it -> {
+            it.setSecret(null);
+            it.setM3u8(null);
+            return it;
+        }).collect(toList());
+
+    }
+
+    @Override
     public Media findOne(String id) {
         return mediaRepository.findOne(id);
     }
@@ -93,7 +103,11 @@ public class MediaServiceImpl implements MediaService {
 
     @Override
     public List<Media> findByUser(String id, Status status) {
-        return mediaRepository.findByUserIdAndStatus(id, status);
+        return mediaRepository.findByUserIdAndStatus(id, status).stream().map(it -> {
+            it.setSecret(null);
+            it.setM3u8(null);
+            return it;
+        }).collect(toList());
     }
 
     /*
