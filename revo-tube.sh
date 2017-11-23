@@ -1,52 +1,54 @@
 #!/usr/bin/env bash
 
 data=('config' 'eureka' 'auth' 'bento4' 'indexing' 'feedback' 'tube' 'zuul')
-locations=( [0]=1 [1]=1 [2]=2 [3]=2 [4]=3 [5]=3 [6]=4 [7]=4)
 password="01120266849ASHra;"
 prefix="ashraf"
 suffix="revo@gmail.com"
-last_key=-1
+last_key="null"
+
+applications=([0]="config" [1]="eureka" [2]="auth" [3]="bento4" [4]="indexing" [5]="feedback" [6]="tube" [7]="zuul")
+emails=( [0]="$prefix"1"$suffix" [1]="$prefix"1"$suffix" [2]="$prefix"2"$suffix" [3]="$prefix"2"$suffix" [4]="$prefix"3"$suffix" [5]="$prefix"3"$suffix" [6]="$prefix"4"$suffix" [7]="$prefix"4"$suffix")
+passwords=( [0]="$password" [1]="$password" [2]="$password" [3]="$password" [4]="$password" [5]="$password" [6]="$password" [7]="$password")
 
 function login(){
-    if(($last_key!=${locations[$1]}));then
-        cf login -u $prefix${locations[$1]}$suffix -p $password -a api.run.pivotal.io>"${data[$1]}/${data[$1]}.log"
+    if [ $last_key != ${emails[$1]} ]; then
+        cf login -u "${emails[$1]}" -p "${passwords[$1]}" -a api.run.pivotal.io>"${applications[$1]}/${applications[$1]}.log"
+    else
+    echo "">"${applications[$1]}/${applications[$1]}.log"
     fi
-    last_key=${locations[$1]}
+    last_key=${emails[$1]}
 }
 function deploy(){
     login $1
-	cd ${data[$1]}
-	mvn clean install -DskipTests=true>>"${data[$1]}.log"
-	cf push>>"${data[$1]}.log"
+	cd ${applications[$1]}
+	mvn clean install -DskipTests=true>>"${applications[$1]}.log"
+	cf push>>"${applications[$1]}.log"
 	cd -
 }
 
 function delete(){
     login $1
-    cf delete -r -f  ${data[$1]}
+    cf delete -r -f  ${applications[$1]}
 }
 
 function start(){
     login $1
-	cf start ${data[$1]}>>"${data[$1]}/${data[$1]}.log"
+	cf start ${applications[$1]}>>"${applications[$1]}/${applications[$1]}.log"
 }
 
 function stop(){
     login $1
-	cf stop ${data[$1]}>>"${data[$1]}/${data[$1]}.log"
+	cf stop ${applications[$1]}>>"${applications[$1]}/${applications[$1]}.log"
 }
 
 function logs(){
     login $1
-	cf logs ${data[$1]} --recent >>"${data[$1]}/${data[$1]}.log"
+	cf logs ${applications[$1]} --recent >>"${applications[$1]}/${applications[$1]}.log"
 }
 
 function print(){
     echo "pass deploy,start,stop as your function"
-    for i in "${!data[@]}"
-    do
-        echo -n "${data[i]} ${i}  "
-    done
+    for i in "${!applications[@]}"; do echo -n "${applications[i]} ${i}  "; done
     echo "";
 }
 
@@ -84,7 +86,7 @@ function readValue()
 function main(){
 for i in "${!result[@]}"
 do
-    echo "${method} --> ${data[result[i]]}"
+    echo "${method} --> ${applications[result[i]]}"
     ${method} "${result[i]}"
 done
 }
