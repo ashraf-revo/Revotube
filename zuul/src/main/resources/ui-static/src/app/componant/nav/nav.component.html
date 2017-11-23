@@ -22,7 +22,7 @@
                                             </span>
           </a>
         </li>
-        <li *ngIf="authUser.isAuth==true">
+        <li *ngIf="authUser.isAuth=='true'">
           <a [routerLink]="['/subscriptions']">
             <i class="icon-list icon text-info"></i>
             <span class="font-bold">
@@ -30,7 +30,7 @@
                                             </span>
           </a>
         </li>
-        <li *ngIf="authUser.isAuth==true">
+        <li *ngIf="authUser.isAuth=='true'">
           <a [routerLink]="['/upload']">
             <i class="icon-cloud-upload icon text-info"></i>
             <span class="font-bold">
@@ -38,7 +38,7 @@
                                             </span>
           </a>
         </li>
-        <li *ngIf="authUser.isAuth==true">
+        <li *ngIf="authUser.isAuth=='true'">
           <a [routerLink]="['/settings']">
             <i class=" icon-settings icon text-primary"></i>
             <span class="font-bold">

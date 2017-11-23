@@ -37,12 +37,12 @@
     <li class="hidden-xs" style="padding-top: 25px">
       <rt-notification></rt-notification>
     </li>
-    <li *ngIf="authUser.isAuth!=true">
+    <li *ngIf="authUser.isAuth!='true'">
       <a href="/login">
         Signin
       </a>
     </li>
-    <li class="dropdown" *ngIf="authUser.isAuth==true">
+    <li class="dropdown" *ngIf="authUser.isAuth=='true'">
       <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
                         <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
                             <img [src]="authUser.user.imageUrl" alt="...">

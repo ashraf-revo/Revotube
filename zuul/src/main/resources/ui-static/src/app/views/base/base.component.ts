@@ -37,7 +37,13 @@ export class BaseComponent implements OnInit {
         else this.search_key = "";
         if (it instanceof NavigationEnd) {
           this._defaultService.lastRoute = it;
+          if (this._defaultService.isAccessible(this.userService, this._authService) == false) {
+            console.log(this._defaultService.lastRoute)
+            this._router.navigate(['/']);
+          }
+
         }
+
       }
     );
 
@@ -52,11 +58,14 @@ export class BaseComponent implements OnInit {
     });
 
     this._userService.currentUser().subscribe(it => {
-        this._authService.setAuth(it, true);
+        this._authService.setAuth(it, "true");
       }
       , it => {
-        this._authService.setAuth(null, false);
-        this.authUser = this._authService.getAuthUser()
+        this._authService.setAuth(null, "false");
+        this.authUser = this._authService.getAuthUser();
+        if (this._defaultService.isAccessible(this.userService, this._authService) == false) {
+          this._router.navigate(['/'])
+        }
       }, () => {
       });
   }

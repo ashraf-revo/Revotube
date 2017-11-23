@@ -6,15 +6,15 @@ export class AuthService {
   private authUser: AuthUser;
 
   constructor() {
-    this.authUser = new AuthUser(false, null);
+    this.authUser = new AuthUser(null, null);
   }
 
-  setAuth(user: User, isAuth: boolean) {
+  setAuth(user: User, isAuth: string) {
     this.authUser.setData(isAuth, user);
   }
 
   getIsAuth(): boolean {
-    return this.authUser.isAuth;
+    return this.authUser.isAuth=="true";
   }
 
    getAuthUser():AuthUser{

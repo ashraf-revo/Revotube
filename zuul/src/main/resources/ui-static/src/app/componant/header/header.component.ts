@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.userService.logout().subscribe(it => {
-      this.authService.setAuth(null, false);
+      this.authService.setAuth(null, "false");
     });
 
   }

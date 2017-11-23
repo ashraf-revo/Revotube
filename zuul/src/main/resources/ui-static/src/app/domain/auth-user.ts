@@ -1,9 +1,9 @@
 import {User} from "./user";
 export class AuthUser {
-  constructor(public isAuth: boolean, public user: User) {
+  constructor(public isAuth: string=null, public user: User) {
   }
 
-  setData(isAuth: boolean, user: User) {
+  setData(isAuth: string, user: User) {
     this.isAuth = isAuth;
     this.user = user;
   }
