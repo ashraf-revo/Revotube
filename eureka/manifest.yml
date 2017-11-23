@@ -8,3 +8,4 @@ applications:
   path: target/eureka-0.0.1-SNAPSHOT.jar
   env:
     ENV_CONFIG_HOST: https://revo:revo@revotubeconfig.cfapps.io
+    SPRING_PROFILES_ACTIVE: prod

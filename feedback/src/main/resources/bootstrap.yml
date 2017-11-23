@@ -5,3 +5,5 @@ spring:
   cloud:
     config:
       uri: ${env.config.host:${localconfig}}
+  profiles:
+    active: dev

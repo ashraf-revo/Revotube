@@ -13,7 +13,7 @@ spring:
           password: 011202ASHra
           searchPaths: config/src/main/resources/config
 #        native:
-#          search-locations: classpath:/RevoTubeConfig
+#          search-locations: classpath:/config
 #  profiles:
 #     active: native
 server:

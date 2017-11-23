@@ -1,7 +1,9 @@
-localconfig: https://revo:revo@revotubeconfig.cfapps.io
+localconfig: http://revo:revo@localhost:8888
 spring:
   application:
     name: eureka
   cloud:
     config:
       uri: ${env.config.host:${localconfig}}
+  profiles:
+    active: dev
