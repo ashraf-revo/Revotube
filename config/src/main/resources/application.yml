@@ -11,9 +11,9 @@ spring:
           uri: https://github.com/ashraf-revo/revotube
           username: ashraf1abdelrasool@gmail.com
           password: 011202ASHra
-          searchPaths: RevoTubeConfig
+          searchPaths: RevoTubeConfig config/src/main/resources/RevoTubeConfig
 #        native:
-#          search-locations: classpath:/shared
+#          search-locations: classpath:/RevoTubeConfig
 #  profiles:
 #     active: native
 server:
